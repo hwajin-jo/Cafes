@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인 화면</title>
+    <link rel="stylesheet" type="text/css" href="../css/login.css">
+
+</head>
+<body>
+    <header>
+        <nav>
+            <ul id="categori"> <!-- 리스트 목록등을 나열 할 때-->
+                <li>
+                    <a href="mainLogin.html" style="font-size: 80px; position: absolute; margin: 0;"> C </a>
+                </li> <!-- 목록 -->
+                <li> <a href = "mainLogin.html" style="margin-left: 1200px;"> About C </a> <br> </li>
+                <li> <a href = "cafesUser.html"> Cafes </a> <br> </li>
+                <li> <a href = "community.html"> Community </a> <br> </li>
+                <li> <a href = "qna.html"> Q&A </a> <br> </li>
+                <li> <a href = "login.html" style="color:#6aafe6"> LOGIN </a> <br> </li>
+            </ul>
+        </nav>
+    </header>
+
+    <br><br>
+
+    <section id="loginDiv">
+        <div id="login_form">
+            <form id="login_field">
+                <h1>로그인</h1>
+                <input type="text" name="id" id= "id"placeholder="아이디" >
+                <input type="password" name="password" id="password" placeholder="비밀번호">
+                <label id = chkbox><input type="checkbox" name="idsave" value="idsave">아이디 저장</label>
+                <input type="button" value="로그인" onclick="login()" id="login_btn">
+                <hr width = "80%" color="gray">
+                <a href="#"><input type="button" value="아이디 찾기" id="findId_btn"></a>
+                <a href="#"><input type="button" value="비밀번호 찾기" id="findPassword_btn"></a>
+                <a href="signup.html"><input type="button" value="회원가입" id="signup_btn"></a>
+            </form>
+        </div>
+    </section>
+    <hr style="margin-bottom: 20px;">
+    <br>
+
+    
+    <footer id="footer">
+        <nav id="footNav">
+            <ul id="footText">
+                <li>
+                    상호명: 프로젝트 커피<br>
+                    대표자: 홍길동 | 개인정보관리책임자: 최윤성<br>
+                    사업자 등록번호: 000-00-00000 | 사업장 소재지: 서울특별시 강남구<br>
+                    © Project Coffee 2022
+                </li>
+            </ul>
+        </nav>
+    </footer>
+    
+</body>
+</html>
+<script>
+    function login(){
+        let id1 ="abcde1";
+        let pw1 = "123456a!";
+        let id = document.querySelector('#id');
+        let pw = document.querySelector('#password');
+
+        if(id1 == document.querySelector("#id").value && pw1 == document.querySelector("#password").value) {
+            alert ("로그인에 성공하였습니다.");
+            location.href="mainLogout.html";
+        }else if (id.value =="" || pw.value =="") {
+            alert("아이디와 비밀번호를 입력해 주세요.");
+        }else{
+            alert("로그인에 실패하였습니다.");
+         }
+    }
+</script>

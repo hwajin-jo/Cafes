@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link rel="stylesheet" type="text/css" href="../css/qna.CSS">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript"
+        src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=9UiP8Frb71S57zs8YonlmXTsDyIAcakVcEJOtQAv"></script>
+    <!-- cafeDetailAdmin 파일들에서 공통적으로 사용할 js 파일 -->
+    <!-- <script src="../js/articles.json" type="text/javascript"></script> -->
+    <script src="../js/cafeDetailAdmin.js" type="text/javascript"></script>
+    <title> 카페 추천 글쓰기</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul id="categori">
+                <!-- 리스트 목록등을 나열 할 때-->
+                <li>
+                    <a href="mainLogout.html" style="font-size: 80px; position: absolute; margin: 0;"> C </a>
+                </li> <!-- 목록 -->
+                <li> <a href="mainLogout.html" style="margin-left: 1200px;"> About C </a> <br> </li>
+                <li> <a href="cafesUser.html" style="color:#6aafe6"> Cafes </a> <br> </li>
+                <li> <a href="community.html"> Community </a> <br> </li>
+                <li> <a href="qna.html"> Q&A </a> <br> </li>
+                <li> <a href="mainLogin.html"> LOGOUT </a> <br> </li>
+            </ul>
+        </nav>
+    </header>
+
+    <br><br>
+
+    <section id="mainDiv">
+        <div class="container">
+            <!-- <div style="width: 600px; height: 400px; margin-top: 150px; margin-left: 600px; background-color: gray;"></div> -->
+            <form action="cafesAdmin.html" method="post">
+                <div class="form-group">
+                    <label for="title"> 제목 </label><br>
+                    <input type="text" class="form-control" id="title" placeholder="제목 입력" name="title"
+                        value="3F Lobby">
+                </div>
+                <div class="form-group">
+                    <label for="subtitle"> 부제 </label><br>
+                    <input type="text" class="form-control" id="subtitle" placeholder="부제 입력" name="subtitle"
+                        value="건축가에게 탕비실이 있다면">
+                </div>
+                <div class="form-group">
+                    <label for="address"> 주소 </label><br>
+                    <input type="text" class="form-control" id="address" placeholder="주소 입력" name="address">
+                </div>
+                <button type="button" onclick="goPopup();">주소 검색</button>
+                <br><br>
+                <div class="form-group">
+                    <label for="content"> 내용 </label><br>
+                    <textarea class="form-control" name="content" id="content" cols="30" rows="5" placeholder="내용 작성">3층에 있는 카페가 흔한가? 아니다. 하리오도 아닌 케멕스가 줄지어 있는 카페가 흔한가? 아니다. 그렇게 흔치 않은 조합이 용산에 있었다. 여기는 세 명의 건축가가 모여 만든 건축가의 탕비실, 3F Lobby다.
+들어서자마자 받은 첫 인상은 바로 진지함이었다. 물론 해질녘 빛이 들어오는 공간도 좋았지만, 일하시는 두 분 모두 백화점에서 보던 그런 명찰을 착용하고 계셨다.자연스레 커피에 대해 진지하게 임할 것이라는 기대가 생겨났다.
+르완다 부산제 원두는 사실 얼마 전 FOUR B에서도 접했었다. 그때도 상당히 밸런스 좋은 원두임을 알고 있었는데, 역시나 이번에도 맛있었다. 두 원두 모두 거의 비슷한 컵노트였지만 추출도구의 차이점인지 플로럴한 느낌은 물론이고 레몬의 껍질처럼 상큼한 풍미가 잘 드러났다. 케멕스가 향을 잘 붙잡고 있다는 말을 들었는데, 직접 체험해볼 수 있어서 신기했다.
+마지막으로 바에서도 보기 힘든 동그란 얼음까지. 삼층로비는 단순히 '이 정도면 됐다'하는 만족을 넘어서, 세 명의 건축가가 추구하는 최고의 '공간'이었다.</textarea>
+                </div>
+                <input type="file"> <br>
+                <!-- cafe_write.css를 만들지 않고 qna.css 링크 걸어 사용했습니다. 참고하세요 -->
+                <!-- cafeDetailAdmin.js의 apply funtion으로 연결 -->
+                <button type="button" class="w-btn w-btn-blue pull-right" onclick="apply()"> 등록 </button>
+            </form>
+        </div>
+
+        </div>
+    </section>
+    <hr style="margin-bottom: 20px;">
+    <br>
+
+
+    <footer id="footer">
+        <nav id="footNav">
+            <ul id="footText">
+                <li>
+                    상호명: 프로젝트 커피<br>
+                    대표자: 홍길동 | 개인정보관리책임자: 최윤성<br>
+                    사업자 등록번호: 000-00-00000 | 사업장 소재지: 서울특별시 강남구<br>
+                    © Project Coffee 2022
+                </li>
+            </ul>
+        </nav>
+    </footer>
+
+</body>
+
+</html>
+
+<script type="text/javascript">
+    function goPopup() {
+        var pop = window.open("jusoPopup.html", "pop", "width=570,height=420, scrollbars=yes, resizable=yes");
+    }
+    function jusoCallBack(roadAddrPart1) {
+        document.form.map.value = roadAddrPart1;
+    }
+</script>

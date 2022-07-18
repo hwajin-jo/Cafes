@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link rel="stylesheet" type="text/css" href="../css/cafe_list.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <!-- 테마 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <!-- 자바스크립트 -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <title> 카페 추천 리스트 </title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul id="categori">
+                <!-- 리스트 목록등을 나열 할 때-->
+                <li>
+                    <a href="./main.html" style="font-size: 80px; position: absolute; margin: 0;"> C </a>
+                </li> <!-- 목록 -->
+                <li> <a href="main.html" style="margin-left: 1200px;"> About C </a> <br> </li>
+                <li> <a href="cafesAdmin.html" style="color:#6aafe6"> Cafes </a> <br> </li>
+                <li> <a href="community.html"> Community </a> <br> </li>
+                <li> <a href="qnaboard.html"> Q&A </a> <br> </li>
+                <li> <a href="#"> LOGIN </a> <br> </li>
+            </ul>
+        </nav>
+    </header>
+
+    <br><br>
+
+    <section id="mainDiv">
+        <div style="width: 600px; height: 400px; margin-top: 150px; margin-left: 600px; background-color: white;">
+            <ul>
+                <!-- cafe_a -->
+                <li>
+                    <div id="cafe_a" class="card border-white mb-3" style="max-width: 600px;" onclick="location.href='cafeDetailAdmin1.html'">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="../img/cafe_a.jpg" class="img-fluid rounded-start" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h4 class="card-title"> 3F Lobby </h4>
+                                    <p class="card-text"> 건축가들에게 탕비실이 있다면 </p>
+                                    <p class="card-text"><small class="text-muted"> 3층에 있는 카페가 흔한가? 아니다. 하리오도 아닌 케멕스가
+                                            줄지어 있는 카페가 흔한가? 아니다. 그렇게 흔치 않은 조합이 용산에 있었다. 여기는 세 명의 건축가가 모여 만든 "건축가의 탕비실",
+                                            3F Lobby다.
+                                        </small></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <br>
+                <hr width="600px" color="gray" noshade />
+                <br>
+
+                <!-- cafe_b -->
+                <li>
+                    <div id="cafe_b" class="card border-white mb-3" style="max-width: 600px;" onclick="location.href='cafeDetailAdmin2.html'">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="../img/cafe_b.jpg" class="img-fluid rounded-start" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h4 class="card-title">샌디레이크</h4>
+                                    <p class="card-text"> 대구에서 만나는 터키식 커피, 그리고 카이막.</p>
+                                    <p class="card-text"><small class="text-muted"> 에스프레소 바의 유행을 잇는 주자는 누가 될까? 나는 터키식
+                                            커피로 점쳐본다. 대구에서 우연히 제즈베를 다루는 샌디레이크 를 발견해 방문했다. </small></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <br>
+                <hr width="600px" color="gray" noshade />
+                <br>
+
+                <!-- cafe_c -->
+                <li>
+                    <div id="cafe_c" class="card border-white mb-3" style="max-width: 600px;" onclick="location.href='cafeDetailAdmin3.html'">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="../img/cafe_c.jpg" class="img-fluid rounded-start" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h4 class="card-title"> 프롬헤라스 </h4>
+                                    <p class="card-text"> 13종에 달하는 원두를 취향대로 </p>
+                                    <p class="card-text"><small class="text-muted">원두 편집샵을 표방하는 프롬헤라스에서는 원두의 특징을 '도'부터
+                                            '시'까지의 음계로 표현한다. 도는 가장 어두운 맛을 가지고 있으며, 시에 가까워질수록 가볍고 다양한 맛이 난다.</small></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                
+                <button onclick="window.location.href='cafeWrite.html'" class="w-btn w-btn-blue pull-right"> 새 글쓰기 </button>
+                
+        </div>
+        </ul>
+
+        
+    </section>
+    <hr style="margin-bottom: 20px;">
+    <br>
+
+
+    <footer id="footer">
+        <nav id="footNav">
+            <ul id="footText">
+                <li>
+                    상호명: 프로젝트 커피<br>
+                    대표자: 홍길동 | 개인정보관리책임자: 최윤성<br>
+                    사업자 등록번호: 000-00-00000 | 사업장 소재지: 서울특별시 강남구<br>
+                    © Project Coffee 2022
+                </li>
+            </ul>
+        </nav>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
+
+<script>
+
+</script>

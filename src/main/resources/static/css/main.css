@@ -1,0 +1,211 @@
+/* 초기화 하기*/
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+/* header ul*/
+#categori {
+    list-style: none;
+    height: 130%;
+    padding: 5px 10px;
+    margin: 0px;
+
+}
+
+#categori li {
+    float: left;
+    position: relative;
+    margin: 15px 15px;
+    padding: 0;
+}.clear{clear:both}
+
+li.on{color:red}
+
+#categori li a {
+    display: block;
+    font-family: "굴림", "돋움";
+    font-weight: bold;
+    font-size: 15px;
+    margin: 20px;
+    color: black;
+    text-decoration: none;
+    text-shadow: 0 1px 1px silver;
+}
+
+#categori li:hover > a {
+    color:darkgray;
+    margin: 0;
+    padding: 0;
+}
+
+
+#categori li:hover > ul li {
+    display: block;
+}
+
+
+#mainContent {
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    padding: 25px 25px;
+    margin: 100px;
+}
+
+#mainContent tr td {
+    position: relative;
+    margin: 5% 5%;
+    padding: 0;
+}
+
+#mainContent td {
+    font-family: "굴림", "돋움", "명조";
+    font-weight: bold;
+    font-size:20px;
+    margin: 0;
+    color: black;
+}
+
+#mainContent td a {
+    display: block;
+}
+
+#mainContent td a img {
+    position: relative;
+    text-align: center;
+    width: 85%;
+    margin: 5px;
+    margin: 5px;
+    margin-top: 20px;
+}
+
+#mainDiv {
+    height: auto;
+    min-height: 100%;
+    padding-bottom: 30px;
+    width: 90%;
+}
+
+#page {
+    text-align: center;
+}
+
+#page a {
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+    text-align: center;
+}
+
+
+
+#footer {
+    clear: left;
+    height: 60px;
+    position: relative;
+    transform: translateY(-60%);
+    width: 100%;
+    text-align: center;
+
+}
+
+
+#footMenu li {
+    position: relative;
+    margin: 0px 1px;
+    padding: 0;
+    display: inline-block;
+}
+
+#footMenu li a {
+    display: block;
+    font-family: "굴림";
+    font-size: 10px;
+    color: black;
+    text-decoration: none;
+}
+
+#footText {
+    list-style: none;
+    font-size: 10px;
+    color: gray;
+    margin-bottom: 20px;   
+    
+}
+
+/* .div2 {
+    display: flex;
+    justify-content: center;
+}
+
+.clicked {
+    color : gold;
+} */
+
+
+
+/* 슬라이드 */
+
+/* 슬라이드 높이 넓이 설정 */
+#slideShow {
+    width: 500px;
+    height: 600px;
+    position: relative;
+    margin: 0 auto;
+    overflow: hidden; 
+  }
+  
+  
+  #slides {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 2000px; 
+    transition: 0.5s ease-out; 
+  }
+  
+  
+  #slides li {
+    list-style-type: none;
+    float:left;
+    margin-right: 100px;
+    font-size: 17px;
+  }
+
+  img {
+    width: 400px;
+    height: 600px;
+    }
+  
+  #controller span {
+    position: absolute;
+    background-color: transparent;
+    color: black;
+    text-align: center;
+    border-radius: 50%;
+    padding: 10px 20px;
+    top: 50%;
+    font-size: 1.3em;
+    cursor: pointer;
+  } 
+  
+  #controller span:hover {
+    background-color: rgba(128, 128, 128, 0.11);
+  }
+  
+  #prev {
+    left: 10px;
+  } 
+  #prev:hover {
+    transform: translateX(-10px);
+  }
+  #next {
+    right: 10px;
+  } 
+  #next:hover {
+    transform: translateX(10px);
+  }

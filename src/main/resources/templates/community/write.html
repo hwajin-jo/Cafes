@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = "stylesheet" type="text/css" href="../css/main.css">
+    <link rel = "stylesheet" type="text/css" href="../css/qna.CSS">
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <!-- 테마 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <!-- 자바스크립트 -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <title>글 작성</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul id="categori"> <!-- 리스트 목록등을 나열 할 때-->
+                <li>
+                    <a href="mainLogout.html" style="font-size: 80px; position: absolute; margin: 0;"> C </a>
+                </li> <!-- 목록 -->
+                <li> <a href = "mainLogout.html" style="margin-left: 1200px;"> About C </a> <br> </li>
+                <li> <a href = "cafesUser.html"> Cafes </a> <br> </li>
+                <li> <a href = "community.html"> Community </a> <br> </li>
+                <li> <a href = "qna.html"> Q&A </a> <br> </li>
+                <li> <a href = "mainLogin.html"> LOGOUT </a> <br> </li>
+            </ul>
+        </nav>
+    </header>
+
+    <br><br>
+
+    <section>
+        <div class="container">
+            <h3 style="margin-left: 15%; font-weight: bold;">글 작성</h3>
+            <br><br>
+            <form action="insert.php" method="post" enctype="multipart/form-data">
+                <div style="width: 650px; margin: auto;">
+                    <div class="form-group">
+                        <label for="comment">제목</label>
+                        <input type="text" class="form-control" id="title">
+                    </div>
+                    <div class="form-group">
+                        <label for="comment">내용</label>
+                        <textarea class="form-control" id="contents" rows="20" placeholder="적절치 못한 내용의 게시글은 삭제될 수 있습니다."></textarea>
+                    </div>
+                    <button class="w-btn w-btn-blue pull-right" type="button" onclick="save();"> 작성 </button>
+                </div>
+            </form>
+        </div>
+    </section>
+    <div style="margin-bottom: 650px;"></div>
+
+    <hr style="margin-bottom: 20px;">
+    <br>
+
+
+
+    <footer id="footer">
+        <nav id="footNav">
+            <ul id="footText">
+                <li>
+                    상호명: 프로젝트 커피<br>
+                    대표자: 홍길동 | 개인정보관리책임자: 최윤성<br>
+                    사업자 등록번호: 000-00-00000 | 사업장 소재지: 서울특별시 강남구<br>
+                    © Project Coffee 2022
+                </li>
+            </ul>
+        </nav>
+    </footer>
+</body>
+</html> 
+
+<script type="text/javascript">
+    function save() {
+        let title = document.getElementById("title").value;
+        let contents = document.getElementById("contents").value;
+        if(title == "") {
+            alert("제목은 필수입니다.");
+            title.focus();
+        } else if(contents == "") {
+            alert("내용은 필수입니다.")
+            contents.focus();
+        } else {
+            location.href="qna.html";
+        }
+    }
+
+</script>
