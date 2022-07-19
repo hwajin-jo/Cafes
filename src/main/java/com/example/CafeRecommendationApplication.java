@@ -13,9 +13,5 @@ public class CafeRecommendationApplication {
 		SpringApplication.run(CafeRecommendationApplication.class, args);
 	}
 	
-	@GetMapping(value="/")
-	public String HelloWorld() {
-		return "Hello World!";
-	}
 
 }
