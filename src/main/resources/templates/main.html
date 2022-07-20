@@ -1,9 +1,15 @@
 
 <html layout:decorate = "~{layout}">
 
+<!-- 고유 CSS layout으로 보내기 -->
+
+<th:block layout:fragment="css">
+       <link rel="stylesheet" th:href="@{/css/banner.css}" >
+</th:block>
+
 <div layout:fragment = "content">
 	
-    <br><br>
+    
     <section>
         <div class="slideshow-container">
 
@@ -31,7 +37,9 @@
                                
 </section>
 
-<script type="text/javascript">
+
+<!-- js추가 -->
+<script layout:fragment="script" type='text/javascript'>
 
     $(document).ready(function () {
         $(".mySlideDiv").not(".active").hide(); //화면 로딩 후 첫번째 div를 제외한 나머지 숨김
