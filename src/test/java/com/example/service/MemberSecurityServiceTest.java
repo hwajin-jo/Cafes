@@ -17,10 +17,10 @@ import com.example.entity.Member;
 @SpringBootTest
 @Transactional
 @TestPropertySource(locations="classpath:application-test.properties")
-public class MemberServiceTest {
+public class MemberSecurityServiceTest {
 	
 	@Autowired
-	MemberService memberService;
+	MemberSecurityService memberService;
 	
 	@Autowired
 	PasswordEncoder passwordEncoder;
