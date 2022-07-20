@@ -37,7 +37,7 @@ public class Member {
 	
 	private String password;
 	
-	private String address;
+	private String phone;
 	
 	@Enumerated(EnumType.STRING)
 	private Role role;
@@ -47,7 +47,7 @@ public class Member {
 		Member member = new Member();
 		member.setName(memberFormDto.getName());
 		member.setEmail(memberFormDto.getEmail());
-		member.setAddress(memberFormDto.getPhone());
+		member.setPhone(memberFormDto.getPhone());
 		String password = passwordEncoder.encode(memberFormDto.getPassword());
 		member.setPassword(password);
 		member.setRole(Role.USER);

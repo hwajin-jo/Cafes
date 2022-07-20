@@ -42,7 +42,7 @@ public class MemberServiceTest {
 		
 		assertEquals(member.getEmail(), savedMember.getEmail());
 		assertEquals(member.getName(), savedMember.getName());
-		assertEquals(member.getAddress(), savedMember.getAddress());
+		assertEquals(member.getPhone(), savedMember.getPhone());
 		assertEquals(member.getPassword(), savedMember.getPassword());
 		assertEquals(member.getRole(), savedMember.getRole());
 		
