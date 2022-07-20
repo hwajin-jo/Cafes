@@ -1,5 +1,5 @@
-<header>
-	<nav th:fragment="headerFragment">
+<header th:fragment="headerFragment">
+	<nav>
         <ul id="categori">
         <!-- 리스트 목록등을 나열 할 때-->
         	<li>
@@ -9,7 +9,8 @@
         	<li> <a href="#" style="color:#6aafe6"> Cafes </a> <br> </li>
         	<li> <a href="#"> Community </a> <br> </li>
         	<li> <a href="#"> Q&A </a> <br> </li>
-        	<li> <a href="#"> LOGIN </a> <br> </li>
+        	<li sec:authorize="isAnonymous()"> <a href = "/members/login"> LOGIN </a> <br> </li>
+            <li sec:authorize="isAuthenticated()"> <a href = "/members/logout"> LOGOUT </a> <br> </li>
     	</ul>
 	</nav>
 </header>

@@ -39,21 +39,7 @@
 </head>
 
 <body>
-    <header>
-        <nav>
-             <ul id="categori"> <!-- 리스트 목록등을 나열 할 때-->
-                <li>
-                    <a href="/" style="font-size: 80px; position: absolute; margin: 0;"> C </a>
-                </li> <!-- 목록 -->
-                <li> <a href = "/" style="margin-left: 1200px;"> About C </a> <br> </li>
-                <li> <a href = "cafesUser.html "> Cafes </a> <br> </li>
-                <li> <a href = "community.html"> Community </a> <br> </li>
-                <li> <a href = "qna.html"> Q&A </a> <br> </li>
-                <li sec:authorize="isAnonymous()"> <a href = "/members/login"> LOGIN </a> <br> </li>
-                <li sec:authorize="isAuthenticated()"> <a href = "/members/logout"> LOGOUT </a> <br> </li>
-            </ul>
-        </nav>
-    </header>
+    <header th:replace="header::headerFragment"></header>
 
     <br><br>
 
@@ -92,18 +78,7 @@
     <hr style="margin-bottom: 20px;">
     <br>
 
-    <footer id="footer">
-        <nav id="footNav">
-            <ul id="footText">
-                <li>
-                    상호명: 프로젝트 커피<br>
-                    대표자: 홍길동 | 개인정보관리책임자: 최윤성<br>
-                    사업자 등록번호: 000-00-00000 | 사업장 소재지: 서울특별시 강남구<br>
-                    © Project Coffee 2022
-                </li>
-            </ul>
-        </nav>
-    </footer>
+	<footer th:replace="footer::footerFragment"/>
 
 
 </body>
