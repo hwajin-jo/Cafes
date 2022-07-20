@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" type="text/css" th:href="@{/bootstrap.min.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/style.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
+	<!-- 부트스트랩 자바스크립트 추가 -->
+	<script th:src="@{/bootstrap.min.js}"></script>
+        
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+ 
+    
+<title> Cafes </title>
+</head>
+<body>
+
+	<!-- 헤더 -->
+	<header th:replace="header::headerFragment"></header>
+
+	<!-- 기본 템플릿 안에 삽입될 내용 -->
+	<th:block layout:fragment="content"></th:block>
+	
+	<!-- 
+	
+	<html layout:decorate = "~{layout}">
+	<div layout:fragment = "content">
+	
+			내용 넣기
+			
+	</div> 
+	
+	-->	
+	
+	
+	<!-- 풋터 -->
+	<footer th:replace="footer::footerFragment"></footer>
+	
+	
+	
+</body>
+</html>
