@@ -7,7 +7,7 @@
 ------------------------------------------------------ 1
 
 css 추가로 넣기
-<link rel="stylesheet" type="text/css" th:href="@{/css/banner.css}" >
+ex) <link rel="stylesheet" type="text/css" th:href="@{/css/banner.css}" >
        
  ----------------------------------------------------- 1     
 </th:block>
