@@ -2,9 +2,8 @@
 <html layout:decorate = "~{layout}">
 
 <!-- 고유 CSS layout으로 보내기 -->
-
 <th:block layout:fragment="css">
-       <link rel="stylesheet" th:href="@{/css/banner.css}" >
+       <link rel="stylesheet" type="text/css" th:href="@{/css/banner.css}" >
 </th:block>
 
 <div layout:fragment = "content">
@@ -36,7 +35,7 @@
         </div>
                                
 </section>
-
+</div>
 
 <!-- js추가 -->
 <script layout:fragment="script" type='text/javascript'>
@@ -111,9 +110,4 @@
     }
  
 </script>
-
-
-</div>
-
-
 </html>
