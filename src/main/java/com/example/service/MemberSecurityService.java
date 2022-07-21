@@ -41,7 +41,7 @@ public class MemberSecurityService implements UserDetailsService {
 			throw new UsernameNotFoundException(email);
 		}
 		return User.builder()
-				.username(member.getEmail())
+				.username(member.getName())
 				.password(member.getPassword())
 				.roles(member.getRole().toString())
 				.build();
