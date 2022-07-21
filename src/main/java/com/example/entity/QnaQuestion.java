@@ -37,9 +37,8 @@ public class QnaQuestion {
 	@OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE)
 	private List<QnaAnswer> answerList;
 	
-//	@ManyToOne
-//	private Member author;
-	
-//	private LocalDateTime modifyDate;
+	@ManyToOne
+	private Member author;
+
 
 }

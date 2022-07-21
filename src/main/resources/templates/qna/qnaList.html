@@ -4,25 +4,63 @@
 
 <br><br><br><br><br><br><br><br>
 
+
+	<h1 class="text-center"> Q&A 게시판</h1>
+	<br>
 	<table class="table">
 		<thead class="table-dark">
-			<tr>
+			<tr class="text-center">
 				<th>번호</th>
-				<th>제목</th>
+				<th style="width:50%">제목</th>
+				<th>작성자</th>
 				<th>작성일</th>
 			</tr>
 		</thead>
 		<tbody>
-        	<tr th:each="question, loop : ${questionList}">
-        		<td th:text="${loop.count}"></td>
-            	<td>
+        	<tr class="text-center" th:each="question, loop : ${paging}">
+        		<td th:text="${paging.getTotalElements - (paging.number * paging.size) - loop.index}"></td>
+                <td class="text-start">
             		<a th:href="@{|/qna/detail/${question.id}|}"
             		th:text="${question.subject}"></a>
+            		<span class="text-dark small ms-2"
+                        th:if="${#lists.size(question.answerList) > 0}" 
+                        th:text="@{|답변 ${#lists.size(question.answerList)}|}">
+                    </span>
+            	</td>
+            	<td>
+            		<span th:if="${question.author != null}" th:text="${question.author.name}"></span>
             	</td>
             	<td th:text="${#temporals.format(question.createDate, 'yyyy-MM-dd HH:mm')}"></td>
         	</tr>
     	</tbody>
 	</table>
+	
+	<!-- 페이징 -->
+	    <div th:if="${!paging.isEmpty()}">
+        <ul class="pagination justify-content-center">
+        <!-- 처음으로 버튼 구현 ? -->
+            <li class="page-item" th:classappend="${!paging.hasPrevious} ? 'disabled'">
+                <a class="page-link"
+                    th:href="@{|?page=${paging.number-1}|}">
+                    <span>이전</span>
+                </a>
+            </li>
+            <li th:each="page: ${#numbers.sequence(0, paging.totalPages-1)}"
+            	th:if="${page >= paging.number-3 and page <= paging.number+3}"
+                th:classappend="${page == paging.number} ? 'active'" 
+                class="page-item">
+                <a th:text="${page}" class="page-link" th:href="@{|?page=${page}|}"></a>
+            </li>
+            <li class="page-item" th:classappend="${!paging.hasNext} ? 'disabled'">
+                <a class="page-link" th:href="@{|?page=${paging.number+1}|}">
+                    <span>다음</span>
+                </a>
+            </li>
+            <!-- 끝으로 버튼 구현 ? -->
+        </ul>
+    </div>
+	
+	<!-- 페이징 끝 -->
 	<a th:href="@{/qna/create}" class="btn btn-secondary">질문 등록</a>
 	
 <br><br><br><br><br><br>
