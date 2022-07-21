@@ -5,11 +5,8 @@ import java.util.List;
 
 import javax.validation.Valid;
 
-<<<<<<< HEAD
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
-=======
->>>>>>> 9b9716e8f763cfdc5d52edab049355f75af99250
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,11 +15,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-<<<<<<< HEAD
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.server.ResponseStatusException;
-=======
->>>>>>> 9b9716e8f763cfdc5d52edab049355f75af99250
 
 import com.example.dto.CommentFormDto;
 import com.example.dto.CommunityFormDto;
@@ -41,7 +35,6 @@ public class CommunityController {
 	private final CommunityService communityService;
 	private final MemberService memberService;
 	
-<<<<<<< HEAD
 	//게시판 list
 //	@RequestMapping("/list")
 //	public String list(Model model) {
@@ -51,17 +44,12 @@ public class CommunityController {
 //	}
 	
 	@RequestMapping("/list")
-	public String list(Model model, @RequestParam(value="page", defaultValue="0") int page) {
-		Page<Community> paging = this.communityService.getList(page);
-		model.addAttribute("paging", paging);
-=======
-	@RequestMapping("/list")
 	public String list(Model model) {
 		List<Community> communityList = this.communityService.getList();
 		model.addAttribute("communityList", communityList);
->>>>>>> 9b9716e8f763cfdc5d52edab049355f75af99250
 		return "community/community_list";
 	}
+	
 	
 	@RequestMapping(value="/detail/{boardNo}")
 	public String detail(Model model, @PathVariable("boardNo") Integer boardNo, CommentFormDto commentForm) {
@@ -70,20 +58,14 @@ public class CommunityController {
 		return "community/community_detail";
 	}
 	
-<<<<<<< HEAD
 	//게시글 작성Get
-=======
->>>>>>> 9b9716e8f763cfdc5d52edab049355f75af99250
 	@PreAuthorize("isAuthenticated()")
 	@GetMapping("/create")
     public String communityCreate(CommunityFormDto communityForm) {
         return "community/write";
     }
 	
-<<<<<<< HEAD
 	//게시글 작성Post
-=======
->>>>>>> 9b9716e8f763cfdc5d52edab049355f75af99250
 	@PreAuthorize("isAuthenticated()")
 	@PostMapping("/create")
     public String communityCreate(@Valid CommunityFormDto communityForm, 
@@ -97,7 +79,6 @@ public class CommunityController {
         return "redirect:/community/list"; 
     }
 	
-<<<<<<< HEAD
 	//게시글 수정Get
 	@PreAuthorize("isAuthenticated()")
     @GetMapping("/modify/{boardNo}")
@@ -141,7 +122,5 @@ public class CommunityController {
         return "redirect:/community/list";
     }
 	
-=======
->>>>>>> 9b9716e8f763cfdc5d52edab049355f75af99250
 	
 }

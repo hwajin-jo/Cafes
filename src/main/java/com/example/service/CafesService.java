@@ -30,10 +30,10 @@ public class CafesService {
 		Optional<Cafes> oc = this.cafesRepository.findById(id);
 		
 		if(oc.isPresent())	return oc.get();
-		else	return oc.get();	//Ãß°¡ ±¸Çö
+		else	return oc.get();	//ï¿½ß°ï¿½ ï¿½ï¿½ï¿½ï¿½
 	}
 	
-	//°Ô½Ã±Û »ý¼º
+	//ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public void create(String subject, String subtitle, String content, String cafeImage, String address) {
 		Cafes cafes = new Cafes();
 		
@@ -46,8 +46,6 @@ public class CafesService {
 		
 		this.cafesRepository.save(cafes);
 	}
-<<<<<<< HEAD
-=======
 
 	public void modify(Cafes cafes, String subject, String subtitle, String content, String cafeImage, String address) {
 		cafes.setSubject(subject);
@@ -59,6 +57,5 @@ public class CafesService {
 		
 		this.cafesRepository.save(cafes);
 	}
->>>>>>> 9b9716e8f763cfdc5d52edab049355f75af99250
 	
 }
