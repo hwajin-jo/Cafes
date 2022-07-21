@@ -43,32 +43,24 @@
         <div style="width: 600px; height: auto; margin-top: 150px; margin-left: 600px; background-color: white;">
             <!-- 제목, 부제, 사진 가운데 정렬 -->
             <div style="text-align: center; font-weight: bold;">
-                <h1> <strong> 3F Lobby </strong> </h1>
-                <h3> 건축가에게 탕비실이 있다면 </h3>
-                <br><br>
+                <h1 th:text="${cafes.subject}"></h1>
+                <h3 th:text="${cafes.subtitle}"></h3>
+                <br>
+                <div th:text="${cafes.address}" style="color: #6aafe6;"></div>
+                <br>
                 <img src="../img/cafe_a.jpg" alt="" style="max-width: 50%;">
             </div>
 
             <br><br>
             
             <!-- 본문 -->
-            <div style="font-size: 17px;" id="article">
-                &nbsp;&nbsp;3층에 있는 카페가 흔한가? 아니다.
-                하리오도 아닌 케멕스가 줄지어 있는 카페가 흔한가? 아니다. 그렇게 흔치 않은 조합이 용산에 있었다.
-                여기는 세 명의 건축가가 모여 만든 건축가의 탕비실, 3F Lobby다. <br><br>
-                &nbsp;&nbsp;들어서자마자 받은 첫 인상은 바로 진지함이었다.
-                물론 해질녘 빛이 들어오는 공간도 좋았지만, 일하시는 두 분 모두 백화점에서 보던 그런 명찰을 착용하고 계셨다.
-                자연스레 커피에 대해 진지하게 임할 것이라는 기대가 생겨났다. <br><br>
-                &nbsp;&nbsp;르완다 부산제 원두는 사실 얼마 전 FOUR B에서도 접했었다. 그때도 상당히 밸런스 좋은 원두임을 알고 있었는데, 역시나 이번에도 맛있었다.
-                두 원두 모두 거의 비슷한 컵노트였지만 추출도구의 차이점인지 플로럴한 느낌은 물론이고 레몬의 껍질처럼 상큼한 풍미가 잘 드러났다.
-                케멕스가 향을 잘 붙잡고 있다는 말을 들었는데, 직접 체험해볼 수 있어서 신기했다. <br><br>
-                &nbsp;&nbsp;마지막으로 바에서도 보기 힘든 동그란 얼음까지. 삼층로비는 단순히 '이 정도면 됐다'하는 만족을 넘어서, 세 명의 건축가가 추구하는 최고의 '공간'이었다.
-            </div>
+            <div style="font-size: 17px;" id="article" th:text="${cafes.content}"></div>
 
             <br><br>
 
             <div id="btns" style="text-align: center;">
-                <button type="button" class="w-btn w-btn-blue" onclick="location.href='cafeUpdate1.html'"> 수정 </button>
+            	<a th:href="@{|/admin/modify/${cafes.id}|}" class="w-btn w-btn-blue"
+            		th:text="수정"></a>
                 <button type="button" class="w-btn w-btn-blue" onclick="del()"> 삭제 </button>
             </div>
 

@@ -46,5 +46,16 @@ public class CafesService {
 		
 		this.cafesRepository.save(cafes);
 	}
+
+	public void modify(Cafes cafes, String subject, String subtitle, String content, String cafeImage, String address) {
+		cafes.setSubject(subject);
+		cafes.setSubtitle(subtitle);
+		cafes.setContent(content);
+		cafes.setCafeImage(cafeImage);
+		cafes.setAddress(address);
+		cafes.setModifyDate(LocalDate.now());
+		
+		this.cafesRepository.save(cafes);
+	}
 	
 }

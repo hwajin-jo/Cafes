@@ -47,8 +47,9 @@
       </thead>
       <tbody>
          <tr class="text-center" th:each="cafes : ${cafes}">
+         	<td th:text="${cafes.id}"></td> 
             <td class="text-start">
-               <a th:href="@{|/cafes/detail/${cafes.id}|}" th:text="${cafes.subject}"></a>
+               <a th:href="@{|/admin/detail/${cafes.id}|}" th:text="${cafes.subject}"></a>
             </td> 
             <td th:text="${ #temporals.format( cafes.createDate, 'yyyy-MM-dd' ) }"></td>
            

@@ -25,7 +25,7 @@ public class CafesController {
 
 	private final CafesService cafesService;
 	
-	//Ä«ï¿½ï¿½ ï¿½ï¿½ï¿½
+	//Ä«Æä ¸ñ·Ï
 	@RequestMapping("/cafes/list")
 	public String list(Model model) {
 		List<Cafes> cafes = cafesService.getList();
@@ -33,9 +33,7 @@ public class CafesController {
 		return "cafes/cafesUser";
 	}
 	
-
-	//Ä«ï¿½ï¿½ ï¿½Ò°ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-	//Ä«ï¿½ï¿½ ï¿½ï¿½ï¿½ - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//Ä«Æä ¸ñ·Ï - °ü¸®ÀÚ
 	@RequestMapping("/admin/list")
 	public String listAdmin(Model model) {
 		List<Cafes> cafes = cafesService.getList();
@@ -43,8 +41,7 @@ public class CafesController {
 		return "cafes/cafesList";
 	}
 	
-	//Ä«ï¿½ï¿½ ï¿½Ò°ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-
+	//Ä«Æä ¼Ò°³±Û »ó¼¼ ÆäÀÌÁö
 	@RequestMapping("/cafes/detail/{id}")
 	public String detail(Model model, @PathVariable("id") Long id) {
 		Cafes cafes = this.cafesService.getCafes(id);
@@ -52,7 +49,7 @@ public class CafesController {
 		return "cafes/cafeDetailUser";
 	}
 	
-	// Ä«ï¿½ï¿½ ï¿½Ò°ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	// Ä«Æä ¼Ò°³±Û »ó¼¼ ÆäÀÌÁö - °ü¸®ÀÚ
 	@RequestMapping("/admin/detail/{id}")
 	public String detailAdmin(Model model, @PathVariable("id") Long id) {
 		Cafes cafes = this.cafesService.getCafes(id);
@@ -60,7 +57,7 @@ public class CafesController {
 		return "cafes/cafeDetailAdmin";
 	}
 	
-	//Ä«ï¿½ï¿½ ï¿½Ò°ï¿½ï¿½ï¿½ ï¿½Û¼ï¿½ - ï¿½ï¿½ï¿½ï¿½ï¿½Ú¸ï¿½ ï¿½Û¼ï¿½ ï¿½ï¿½ï¿½ï¿½
+	//Ä«Æä ¼Ò°³±Û ÀÛ¼º - °ü¸®ÀÚ¸¸ ÀÛ¼º °¡´É
 	@RequestMapping("/admin/create")
 	public String cafesCreate() {
 		return "cafes/cafeWrite";
@@ -77,7 +74,32 @@ public class CafesController {
 		return "redirect:/admin/list";
 	}
 	
-	
+	//Ä«Æä ¼Ò°³±Û ¼öÁ¤
+	@GetMapping("/admin/modify/{id}")
+	public String questionModify(CafesFormDto cafesFormDto, @PathVariable("id") Long id) {
+		Cafes cafes = this.cafesService.getCafes(id);
+		
+		cafesFormDto.setSubject(cafes.getSubject());
+		cafesFormDto.setSubtitle(cafes.getSubtitle());
+		cafesFormDto.setContent(cafes.getContent());
+		cafesFormDto.setCafeImage(cafes.getCafeImage());
+		cafesFormDto.setAddress(cafes.getAddress());
+		
+		return "cafes/cafesWrite";
+	}
+	@PostMapping("/admin/modify/{id}")
+	public String questionModify(@Valid CafesFormDto cafesFormDto,
+								 BindingResult bindingResult,
+								 @PathVariable("id") Long id) {
+		if(bindingResult.hasErrors())	return "cafes/cafeWrite";
+		
+		Cafes cafes = this.cafesService.getCafes(id);
+		
+		this.cafesService.modify(cafes, cafesFormDto.getSubject(), cafesFormDto.getSubtitle(), cafesFormDto.getContent(),
+								cafesFormDto.getCafeImage(), cafesFormDto.getAddress());
+		
+		return String.format("redirect:/admin/list/detail/%s", id);
+	}
 	
 	
 }
