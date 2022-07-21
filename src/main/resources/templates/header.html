@@ -1,13 +1,13 @@
 <header th:fragment="headerFragment">
 	<nav>
         <ul id="categori">
-        <!-- 리스트 목록등을 나열 할 때-->
+        <!-- 由ъ뒪�듃 紐⑸줉�벑�쓣 �굹�뿴 �븷 �븣-->
         	<li>
-            	<a href="#" style="font-size: 80px; position: absolute; margin: 0;"> C </a>
-        	</li> <!-- 목록 -->
-        	<li> <a href="#" style="margin-left: 1200px;"> About C </a> <br> </li>
-        	<li> <a href="#" style="color:#6aafe6"> Cafes </a> <br> </li>
-        	<li> <a href="#"> Community </a> <br> </li>
+            	<a href="/" style="font-size: 80px; position: absolute; margin: 0;"> C </a>
+        	</li> <!-- 紐⑸줉 -->
+        	<li> <a href="/" style="margin-left: 1200px;"> About C </a> <br> </li>
+        	<li> <a href="#" > Cafes </a> <br> </li>
+        	<li> <a href="/community/list"> Community </a> <br> </li>
         	<li> <a href="#"> Q&A </a> <br> </li>
         	<li sec:authorize="isAnonymous()"> <a href = "/members/login"> LOGIN </a> <br> </li>
             <li sec:authorize="isAuthenticated()"> <a href = "/members/logout"> LOGOUT </a> <br> </li>
