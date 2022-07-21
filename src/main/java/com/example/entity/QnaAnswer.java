@@ -39,8 +39,6 @@ public class QnaAnswer {
 	private Member author;
 	
 	private LocalDateTime modifyDate;
-	
-	@ManyToMany
-    Set<Member> voter;
+
 	
 }

@@ -38,7 +38,7 @@
 		<div class="my-3">
 			
 			<a href="javascript:void(0);" class="recommend btn btn-sm btn-outline-secondary"
-                id="lbtn2" th:data-uri="@{|/qna/vote/${question.id}|}">  도움이 되셨나요?
+                id="lbtn2" th:data-uri="@{|/qna/vote/${question.id}|}">  저도 궁금했어요!
                 <span class="badge rounded-pill bg-primary" th:text="${#lists.size(question.voter)}"></span>
             </a>
             <a th:href="@{|/qna/modify/${question.id}|}" class="btn btn-sm btn-outline-secondary"
@@ -119,7 +119,7 @@ Array.from(delete_elements).forEach(function(element) {
 const recommend_elements = document.getElementsByClassName("recommend");
 Array.from(recommend_elements).forEach(function(element) {
     element.addEventListener('click', function() {
-        if(confirm("정말로 추천하시겠습니까?")) {
+        if(true) {
             location.href = this.dataset.uri;
         };
     });
