@@ -9,5 +9,5 @@ import com.example.entity.Community;
 
 public interface CommunityRepository extends JpaRepository<Community, Integer>{
 	
-//	Page<Community> findAll(Pageable pageable);
+	Page<Community> findAll(Pageable pageable);
 }

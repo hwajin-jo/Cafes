@@ -23,9 +23,9 @@
                     <a href="/" style="font-size: 80px; position: absolute; margin: 0;"> C </a>
                 </li> <!-- 목록 -->
                 <li> <a href = "/" style="margin-left: 1200px;"> About C </a> <br> </li>
-                <li> <a href = "cafesUser.html"> Cafes </a> <br> </li>
+                <li> <a href = "#"> Cafes </a> <br> </li>
                 <li> <a th:href = "@{/community/list}"> Community </a> <br> </li>
-                <li> <a href = "qna.html"> Q&A </a> <br> </li>
+                <li> <a href = "#"> Q&A </a> <br> </li>
                 <li sec:authorize="isAnonymous()"> <a href = "/members/login"> LOGIN </a> <br> </li>
                 <li sec:authorize="isAuthenticated()"> <a href = "/members/logout"> LOGOUT </a> <br> </li>
             </ul>
@@ -38,19 +38,20 @@
     	<div class="container">
 		    <h3 style="margin-right: 15%; font-weight: bold;">글 작성</h3>
 		    <br><br>
-		    <form th:action="@{/community/create}" th:object="${communityFormDto}" method="post">
+		    <form th:object="${communityFormDto}" method="post">
+		    	<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
 				<div class="alert alert-danger" role="alert" th:if="${#fields.hasAnyErrors()}">
 		            <div th:each="err : ${#fields.allErrors()}" th:text="${err}" />
 		        </div>
 		        <div class="form-group">
 		            <label for="subject">제목</label>
-		            <input type="text" th:field="*{content}">
+		            <input type="text" th:field="*{content}" class="form-control">
 		        </div>
 		        <div class="form-group">
 		            <label for="content">내용</label>
 		            <textarea th:field="*{subject}" class="form-control" id="contents" rows="20" placeholder="적절치 못한 내용의 게시글은 삭제될 수 있습니다."></textarea>
 		        </div>
-		        <input type="submit" value="저장" class="w-btn w-btn-blue pull-right">
+		        <input type="submit" value="저장" class="btn btn-primary">
 		    </form>
 		</div>
     </section>
