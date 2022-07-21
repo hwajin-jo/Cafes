@@ -25,7 +25,7 @@ public class CafesController {
 
 	private final CafesService cafesService;
 	
-	//Ä«Æä ¸ñ·Ï
+	//Ä«ï¿½ï¿½ ï¿½ï¿½ï¿½
 	@RequestMapping("/cafes/list")
 	public String list(Model model) {
 		List<Cafes> cafes = cafesService.getList();
@@ -33,7 +33,9 @@ public class CafesController {
 		return "cafes/cafesUser";
 	}
 	
-	//Ä«Æä ¸ñ·Ï - °ü¸®ÀÚ
+
+	//Ä«ï¿½ï¿½ ï¿½Ò°ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//Ä«ï¿½ï¿½ ï¿½ï¿½ï¿½ - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	@RequestMapping("/admin/list")
 	public String listAdmin(Model model) {
 		List<Cafes> cafes = cafesService.getList();
@@ -41,7 +43,8 @@ public class CafesController {
 		return "cafes/cafesList";
 	}
 	
-	//Ä«Æä ¼Ò°³±Û »ó¼¼ ÆäÀÌÁö
+	//Ä«ï¿½ï¿½ ï¿½Ò°ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+
 	@RequestMapping("/cafes/detail/{id}")
 	public String detail(Model model, @PathVariable("id") Long id) {
 		Cafes cafes = this.cafesService.getCafes(id);
@@ -49,7 +52,7 @@ public class CafesController {
 		return "cafes/cafeDetailUser";
 	}
 	
-	// Ä«Æä ¼Ò°³±Û »ó¼¼ ÆäÀÌÁö - °ü¸®ÀÚ
+	// Ä«ï¿½ï¿½ ï¿½Ò°ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	@RequestMapping("/admin/detail/{id}")
 	public String detailAdmin(Model model, @PathVariable("id") Long id) {
 		Cafes cafes = this.cafesService.getCafes(id);
@@ -57,7 +60,7 @@ public class CafesController {
 		return "cafes/cafeDetailAdmin";
 	}
 	
-	//Ä«Æä ¼Ò°³±Û ÀÛ¼º - °ü¸®ÀÚ¸¸ ÀÛ¼º °¡´É
+	//Ä«ï¿½ï¿½ ï¿½Ò°ï¿½ï¿½ï¿½ ï¿½Û¼ï¿½ - ï¿½ï¿½ï¿½ï¿½ï¿½Ú¸ï¿½ ï¿½Û¼ï¿½ ï¿½ï¿½ï¿½ï¿½
 	@RequestMapping("/admin/create")
 	public String cafesCreate() {
 		return "cafes/cafeWrite";
