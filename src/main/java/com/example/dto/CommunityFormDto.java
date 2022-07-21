@@ -10,10 +10,10 @@ import lombok.Setter;
 @Setter
 public class CommunityFormDto {
 	
-	@NotEmpty(message="ì œëª©ì„ ì…ë ¥í•´ ì£¼ì„¸ìš”.")
+	@NotEmpty(message="Á¦¸ñÀ» ÀÔ·ÂÇØ ÁÖ¼¼¿ä.")
     private String content;
 	
-    @NotEmpty(message="ë‚´ìš©ì„ ì…ë ¥í•´ ì£¼ì„¸ìš”.")
+    @NotEmpty(message="³»¿ëÀ» ÀÔ·ÂÇØ ÁÖ¼¼¿ä.")
     @Size(max=200)
     private String subject;
 
