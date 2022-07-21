@@ -8,6 +8,7 @@ class CafeRecommendationApplicationTests {
 
 	@Test
 	void contextLoads() {
+		
 	}
 
 }

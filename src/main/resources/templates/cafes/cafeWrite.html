@@ -31,7 +31,8 @@
                 <li> <a href="cafesUser.html" style="color:#6aafe6"> Cafes </a> <br> </li>
                 <li> <a href="community.html"> Community </a> <br> </li>
                 <li> <a href="qna.html"> Q&A </a> <br> </li>
-                <li> <a href="mainLogin.html"> LOGOUT </a> <br> </li>
+                <li> <a href="#" sec:authorize="isAnonymous()"> LOGIN </a> <br> </li>
+                <li> <a href="#" sec:authorize="isAuthenticated()"> LOGOUT </a> <br> </li>
             </ul>
         </nav>
     </header>
@@ -41,14 +42,18 @@
     <section id="mainDiv">
         <div class="container">
             <!-- <div style="width: 600px; height: 400px; margin-top: 150px; margin-left: 600px; background-color: gray;"></div> -->
-            <form action="cafesAdmin.html" method="post">
+            <form th:object="${cafesFormDto}" method="post">
+            	<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+				<div class="alert alert-danger" role="alert" th:if="${#fields.hasAnyErrors()}">
+					<div th:each="err:${#fields.allErrors()}" th:text="${err}"></div>
+				</div>
                 <div class="form-group">
                     <label for="title"> 제목 </label><br>
-                    <input type="text" class="form-control" id="title" placeholder="제목 입력" name="title">
+                    <input type="text" th:field="*{subject}" class="form-control" id="title" placeholder="제목 입력" name="title">
                 </div>
                 <div class="form-group">
                     <label for="subtitle"> 부제 </label><br>
-                    <input type="text" class="form-control" id="subtitle" placeholder="부제 입력" name="subtitle">
+                    <input type="text" th:field="*{subtitle}" class="form-control" id="subtitle" placeholder="부제 입력" name="subtitle">
                 </div>
                 <div class="form-group">
                     <label for="address"> 주소 </label><br>
@@ -58,13 +63,13 @@
                 <br><br>
                 <div class="form-group">
                     <label for="content"> 내용 </label><br>
-                    <textarea class="form-control" name="content" id="content" cols="30" rows="5"
+                    <textarea th:field="*{content}" class="form-control" name="content" id="content" cols="30" rows="5"
                         placeholder="내용 작성"></textarea>
                 </div>
                 <input type="file"> <br>
                 <!-- cafe_write.css를 만들지 않고 qna.css 링크 걸어 사용했습니다. 참고하세요 -->
                 <!-- cafeDetailAdmin.js의 apply funtion으로 연결 -->
-                <button type="button" class="w-btn w-btn-blue pull-right" onclick="apply()"> 등록 </button>
+                <input type="submit" value="등록" class="w-btn w-btn-blue pull-right">
             </form>
         </div>
 

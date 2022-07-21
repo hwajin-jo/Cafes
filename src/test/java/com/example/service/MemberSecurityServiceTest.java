@@ -17,10 +17,10 @@ import com.example.entity.Member;
 @SpringBootTest
 @Transactional
 @TestPropertySource(locations="classpath:application-test.properties")
-public class MemberServiceTest {
+public class MemberSecurityServiceTest {
 	
 	@Autowired
-	MemberService memberService;
+	MemberSecurityService memberService;
 	
 	@Autowired
 	PasswordEncoder passwordEncoder;
@@ -28,37 +28,37 @@ public class MemberServiceTest {
 	public Member createMember() {
 		MemberFormDto memberFormDto = new MemberFormDto();
 		memberFormDto.setEmail("test@email.com");
-		memberFormDto.setName("È«ï¿½æµ¿");
+		memberFormDto.setName("È«±æµ¿");
 		memberFormDto.setPhone("010-1212-3434");
 		memberFormDto.setPassword("1234");
 		return Member.createMember(memberFormDto, passwordEncoder);
 	}
 	
-//	@Test
-//	@DisplayName("È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½×½ï¿½Æ®")
-//	public void saveMemberTest() {
-//		Member member = createMember();
-//		Member savedMember = memberService.saveMember(member);
-//		
-//		assertEquals(member.getEmail(), savedMember.getEmail());
-//		assertEquals(member.getName(), savedMember.getName());
-//		assertEquals(member.getPhone(), savedMember.getPhone());
-//		assertEquals(member.getPassword(), savedMember.getPassword());
-//		assertEquals(member.getRole(), savedMember.getRole());
-//		
-//	}
-//	
-//	@Test
-//	@DisplayName("ï¿½ßºï¿½ È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½×½ï¿½Æ®")
-//	public void saveDuplicateMemberTest() {
-//		Member member1 = createMember();
-//		Member member2 = createMember();
-//		memberService.saveMember(member1);
-//		
-//		Throwable e = assertThrows(IllegalStateException.class, () -> {
-//			memberService.saveMember(member2);});
-//		
-//		assertEquals("ï¿½Ì¹ï¿½ ï¿½ï¿½ï¿½Ôµï¿½ È¸ï¿½ï¿½ï¿½Ô´Ï´ï¿½.", e.getMessage());
-//	}
+	@Test
+	@DisplayName("È¸¿ø°¡ÀÔ Å×½ºÆ®")
+	public void saveMemberTest() {
+		Member member = createMember();
+		Member savedMember = memberService.saveMember(member);
+		
+		assertEquals(member.getEmail(), savedMember.getEmail());
+		assertEquals(member.getName(), savedMember.getName());
+		assertEquals(member.getPhone(), savedMember.getPhone());
+		assertEquals(member.getPassword(), savedMember.getPassword());
+		assertEquals(member.getRole(), savedMember.getRole());
+		
+	}
+	
+	@Test
+	@DisplayName("Áßº¹ È¸¿ø °¡ÀÔ Å×½ºÆ®")
+	public void saveDuplicateMemberTest() {
+		Member member1 = createMember();
+		Member member2 = createMember();
+		memberService.saveMember(member1);
+		
+		Throwable e = assertThrows(IllegalStateException.class, () -> {
+			memberService.saveMember(member2);});
+		
+		assertEquals("ÀÌ¹Ì °¡ÀÔµÈ È¸¿øÀÔ´Ï´Ù.", e.getMessage());
+	}
 
 }

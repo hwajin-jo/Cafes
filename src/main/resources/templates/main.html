@@ -1,34 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel = "stylesheet" type="text/css" href="../css/main.css">
-    <link rel="stylesheet" href="../css/banner.css">
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <title>메인</title>
-</head>
-<body>
-    <header>
-        <nav>
-            <ul id="categori"> <!-- 리스트 목록등을 나열 할 때-->
-                <li>
-                    <a href="/" style="font-size: 80px; position: absolute; margin: 0;"> C </a>
-                </li> <!-- 목록 -->
-                <li> <a href = "/" style="margin-left: 1200px;"> About C </a> <br> </li>
-                <li> <a href = "cafesUser.html "> Cafes </a> <br> </li>
-                <li> <a href = "community.html"> Community </a> <br> </li>
-                <li> <a href = "qna.html"> Q&A </a> <br> </li>
-                <li sec:authorize="isAnonymous()"> <a href = "/members/login"> LOGIN </a> <br> </li>
-                <li sec:authorize="isAuthenticated()"> <a href = "/members/logout"> LOGOUT </a> <br> </li>
-            </ul>
-        </nav>
-    </header>
 
-    <br><br>
+<html layout:decorate = "~{layout}">
 
+<!-- 고유 CSS layout으로 보내기 -->
+<th:block layout:fragment="css">
+       <link rel="stylesheet" type="text/css" th:href="@{/css/banner.css}" >
+</th:block>
+
+<div layout:fragment = "content">
+	
+    
     <section>
         <div class="slideshow-container">
 
@@ -52,34 +32,13 @@
                 </p>
                 <hr style="width: 700px; height: 5px; border: none; background-color:#d4dfe6;">
             </div>
-            <!-- <a class="prev" onclick="prevSlide()">&#10094;</a>
-            <a class="next" onclick="nextSlide()">&#10095;</a> -->
         </div>
-        
-    </section>
+                               
+</section>
+</div>
 
-    <hr style="margin-bottom: 20px;">
-    <br>
-
-
-    <!-- <hr style="margin-bottom: 20px;"> -->
-    <footer id="footer">
-        <nav id="footNav">
-            <ul id="footText">
-                <li>
-                    상호명: 프로젝트 커피<br>
-                    대표자: 홍길동 | 개인정보관리책임자: 최윤성<br>
-                    사업자 등록번호: 000-00-00000 | 사업장 소재지: 서울특별시 강남구<br>
-                    © Project Coffee 2022
-                </li>
-            </ul>
-        </nav>
-    </footer>
-
-</body>
-</html>
-
-<script type="text/javascript">
+<!-- js추가 -->
+<script layout:fragment="script" type='text/javascript'>
 
     $(document).ready(function () {
         $(".mySlideDiv").not(".active").hide(); //화면 로딩 후 첫번째 div를 제외한 나머지 숨김
@@ -149,5 +108,6 @@
         $(".mySlideDiv").eq(newIndex).show();
         
     }
-    
-    </script>
+ 
+</script>
+</html>

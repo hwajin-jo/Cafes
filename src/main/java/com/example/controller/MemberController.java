@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.dto.MemberFormDto;
 import com.example.entity.Member;
-import com.example.service.MemberService;
+import com.example.service.MemberSecurityService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -21,7 +21,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class MemberController {
 
-	private final MemberService memberService;
+	private final MemberSecurityService memberService;
 	private final PasswordEncoder passwordEncoder;
 	
 	@GetMapping(value = "/new")
