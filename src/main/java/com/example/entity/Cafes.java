@@ -33,6 +33,8 @@ public class Cafes {
 	
 	private LocalDate createDate;
 	
+	private LocalDate modifyDate;
+	
 	private String cafeImage;
 	
 	private String address;
