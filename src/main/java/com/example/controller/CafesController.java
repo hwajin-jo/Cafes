@@ -25,7 +25,7 @@ public class CafesController {
 
 	private final CafesService cafesService;
 	
-	//ī�� ���
+	//카페 목록
 	@RequestMapping("/cafes/list")
 	public String list(Model model) {
 		List<Cafes> cafes = cafesService.getList();
@@ -33,9 +33,7 @@ public class CafesController {
 		return "cafes/cafesUser";
 	}
 	
-
-	//ī�� �Ұ��� �� ������
-	//ī�� ��� - ������
+	//카페 목록 - 관리자
 	@RequestMapping("/admin/list")
 	public String listAdmin(Model model) {
 		List<Cafes> cafes = cafesService.getList();
@@ -43,7 +41,7 @@ public class CafesController {
 		return "cafes/cafesList";
 	}
 	
-	//ī�� �Ұ��� �� ������
+	//카페 소개글 상세 페이지
 	@RequestMapping("/cafes/detail/{id}")
 	public String detail(Model model, @PathVariable("id") Long id) {
 		Cafes cafes = this.cafesService.getCafes(id);
@@ -51,7 +49,7 @@ public class CafesController {
 		return "cafes/cafeDetailUser";
 	}
 	
-	// ī�� �Ұ��� �� ������ - ������
+	// 카페 소개글 상세 페이지 - 관리자
 	@RequestMapping("/admin/detail/{id}")
 	public String detailAdmin(Model model, @PathVariable("id") Long id) {
 		Cafes cafes = this.cafesService.getCafes(id);
@@ -59,7 +57,7 @@ public class CafesController {
 		return "cafes/cafeDetailAdmin";
 	}
 	
-	//ī�� �Ұ��� �ۼ� - �����ڸ� �ۼ� ����
+	//카페 소개글 작성 - 관리자만 작성 가능
 	@RequestMapping("/admin/create")
 	public String cafesCreate() {
 		return "cafes/cafeWrite";
@@ -76,7 +74,7 @@ public class CafesController {
 		return "redirect:/admin/list";
 	}
 	
-	//ī�� �Ұ��� ����
+	//카페 소개글 수정
 	@GetMapping("/admin/modify/{id}")
 	public String questionModify(CafesFormDto cafesFormDto, @PathVariable("id") Long id) {
 		Cafes cafes = this.cafesService.getCafes(id);
@@ -87,7 +85,7 @@ public class CafesController {
 		cafesFormDto.setCafeImage(cafes.getCafeImage());
 		cafesFormDto.setAddress(cafes.getAddress());
 		
-		return "cafes/cafesWrite";
+		return "cafes/cafeWrite";
 	}
 	@PostMapping("/admin/modify/{id}")
 	public String questionModify(@Valid CafesFormDto cafesFormDto,
@@ -100,8 +98,15 @@ public class CafesController {
 		this.cafesService.modify(cafes, cafesFormDto.getSubject(), cafesFormDto.getSubtitle(), cafesFormDto.getContent(),
 								cafesFormDto.getCafeImage(), cafesFormDto.getAddress());
 		
-		return String.format("redirect:/admin/list/detail/%s", id);
+		return String.format("redirect:/admin/detail/%s", id);
 	}
 	
+	//카페 소개글 삭제
+	@GetMapping("/admin/delete/{id}")
+    public String questionDelete(@PathVariable("id") Long id) {
+        Cafes cafes = this.cafesService.getCafes(id);
+        this.cafesService.delete(cafes);
+        return "redirect:/admin/list";
+    }
 	
 }
