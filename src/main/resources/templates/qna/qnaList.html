@@ -1,11 +1,14 @@
 <html layout:decorate = "~{layout}">
-
+<th:block layout:fragment="css">
+<link rel="stylesheet" type="text/css" th:href="@{/bootstrap.min.css}">
+</th:block>
 <div layout:fragment = "content" class="container my-3">
 
 <br><br><br><br><br><br><br><br>
 
 
 	<h1 class="text-center"> Q&A </h1>
+	<a th:href="@{/qna/create}" class="btn btn-secondary mb-5">질문 등록</a>
 	<br>
 	<table class="table">
 		<thead class="table-dark">
@@ -62,6 +65,8 @@
 	
 	<!-- 페이징 끝 -->
 	<a th:href="@{/qna/create}" class="btn btn-secondary">질문 등록</a>
+	
+	<a th:href="@{http://localhost:9000/}" class="btn btn-secondary">메인페이지</a>
 	
 <br><br><br><br><br><br>
 

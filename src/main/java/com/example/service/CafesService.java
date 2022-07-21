@@ -1,14 +1,9 @@
 package com.example.service;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.example.entity.Cafes;
@@ -30,10 +25,10 @@ public class CafesService {
 		Optional<Cafes> oc = this.cafesRepository.findById(id);
 		
 		if(oc.isPresent())	return oc.get();
-		else	return oc.get();	//Ãß°¡ ±¸Çö
+		else	return oc.get();	//ì¶”ê°€ êµ¬í˜„
 	}
 	
-	//°Ô½Ã±Û »ı¼º
+	//ê²Œì‹œê¸€ ìƒì„±
 	public void create(String subject, String subtitle, String content, String cafeImage, String address) {
 		Cafes cafes = new Cafes();
 		
@@ -47,6 +42,7 @@ public class CafesService {
 		this.cafesRepository.save(cafes);
 	}
 
+	//ê²Œì‹œê¸€ ìˆ˜ì •
 	public void modify(Cafes cafes, String subject, String subtitle, String content, String cafeImage, String address) {
 		cafes.setSubject(subject);
 		cafes.setSubtitle(subtitle);
@@ -57,5 +53,10 @@ public class CafesService {
 		
 		this.cafesRepository.save(cafes);
 	}
+	
+	//ê²Œì‹œê¸€ ì‚­ì œ
+	public void delete(Cafes cafes) {
+        this.cafesRepository.delete(cafes);
+    }
 	
 }

@@ -35,7 +35,7 @@ public class CommunityController {
 	private final CommunityService communityService;
 	private final MemberService memberService;
 	
-	//°Ô½ÃÆÇ list
+	//ê²Œì‹œíŒ list
 //	@RequestMapping("/list")
 //	public String list(Model model) {
 //		List<Community> communityList = this.communityService.getList();
@@ -44,11 +44,12 @@ public class CommunityController {
 //	}
 	
 	@RequestMapping("/list")
-	public String list(Model model, @RequestParam(value="page", defaultValue="0") int page) {
-		Page<Community> paging = this.communityService.getList(page);
-		model.addAttribute("paging", paging);
+	public String list(Model model) {
+		List<Community> communityList = this.communityService.getList();
+		model.addAttribute("communityList", communityList);
 		return "community/community_list";
 	}
+	
 	
 	@RequestMapping(value="/detail/{boardNo}")
 	public String detail(Model model, @PathVariable("boardNo") Integer boardNo, CommentFormDto commentForm) {
@@ -57,14 +58,14 @@ public class CommunityController {
 		return "community/community_detail";
 	}
 	
-	//°Ô½Ã±Û ÀÛ¼ºGet
+	//ê²Œì‹œê¸€ ì‘ì„±Get
 	@PreAuthorize("isAuthenticated()")
 	@GetMapping("/create")
     public String communityCreate(CommunityFormDto communityForm) {
         return "community/write";
     }
 	
-	//°Ô½Ã±Û ÀÛ¼ºPost
+	//ê²Œì‹œê¸€ ì‘ì„±Post
 	@PreAuthorize("isAuthenticated()")
 	@PostMapping("/create")
     public String communityCreate(@Valid CommunityFormDto communityForm, 
@@ -78,20 +79,20 @@ public class CommunityController {
         return "redirect:/community/list"; 
     }
 	
-	//°Ô½Ã±Û ¼öÁ¤Get
+	//ê²Œì‹œê¸€ ìˆ˜ì •Get
 	@PreAuthorize("isAuthenticated()")
     @GetMapping("/modify/{boardNo}")
     public String communityModify(CommunityFormDto communityFormDto, @PathVariable("boardNo") Integer boardNo, Principal principal) {
 		Community community = this.communityService.getCommunity(boardNo);
         if(!community.getAuthor().getName().equals(principal.getName())) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "¼öÁ¤±ÇÇÑÀÌ ¾ø½À´Ï´Ù.");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "ìˆ˜ì •ê¶Œí•œì´ ì—†ìŠµë‹ˆë‹¤.");
         }
         communityFormDto.setSubject(community.getSubject());
         communityFormDto.setContent(community.getContent());
         return "community/write";
     }
 	
-	//°Ô½Ã±Û ¼öÁ¤Post
+	//ê²Œì‹œê¸€ ìˆ˜ì •Post
 	@PreAuthorize("isAuthenticated()")
     @PostMapping("/modify/{boardNo}")
     public String communityModify(CommunityFormDto communityFormDto, 
@@ -103,19 +104,19 @@ public class CommunityController {
         }
         Community community = this.communityService.getCommunity(boardNo);
         if(!community.getAuthor().getName().equals(principal.getName())) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "¼öÁ¤ ±ÇÇÑÀÌ ¾ø½À´Ï´Ù.");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "ìˆ˜ì • ê¶Œí•œì´ ì—†ìŠµë‹ˆë‹¤.");
         }
         this.communityService.modify(community, communityFormDto.getSubject(), communityFormDto.getContent());
         return String.format("redirect:/community/detail/%s", boardNo);
     }
 	
-	//°Ô½Ã±Û »èÁ¦ ÄÚµå Get
+	//ê²Œì‹œê¸€ ì‚­ì œ ì½”ë“œ Get
 	@PreAuthorize("isAuthenticated()")
     @GetMapping("/delete/{boardNo}")
     public String communityDelete(Principal principal, @PathVariable("boardNo") Integer boardNo) {
         Community community = this.communityService.getCommunity(boardNo);
         if (!community.getAuthor().getName().equals(principal.getName())) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "»èÁ¦ ±ÇÇÑÀÌ ¾ø½À´Ï´Ù.");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "ì‚­ì œ ê¶Œí•œì´ ì—†ìŠµë‹ˆë‹¤.");
         }
         this.communityService.delete(community);
         return "redirect:/community/list";

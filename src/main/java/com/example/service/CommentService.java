@@ -17,11 +17,12 @@ public class CommentService {
     private final CommentRepository commentRepository;
 
 
-    public void create(Community community, String content/*, Member author*/) {
+    public void create(Community community, String content, Member name) {
         Comment comment = new Comment();
         comment.setContent(content);
         comment.setCreateDate(LocalDateTime.now());
         comment.setCommunity(community);
+        comment.setAuthor(name);
         //comment.setAuthor(author);
         this.commentRepository.save(comment);
     }

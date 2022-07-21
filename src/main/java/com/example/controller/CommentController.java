@@ -4,6 +4,7 @@ import java.security.Principal;
 
 import javax.validation.Valid;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -29,18 +30,19 @@ public class CommentController {
     private final CommentService commentService;
     private final MemberService memberService;
 
+    @PreAuthorize("isAuthenticated()")
     @PostMapping("/create/{boardNo}")
     public String createAnswer(Model model, @PathVariable("boardNo") Integer boardNo, 
     										@Valid CommentFormDto commentForm, 
     										BindingResult bindingResult, 
     										Principal principal) {
     	Community community = this.communityService.getCommunity(boardNo);
-    	//Member member = this.memberService.getMember(principal.getName());
+    	Member member = this.memberService.getMember(principal.getName());
     	if(bindingResult.hasErrors()) {
     		model.addAttribute("community", community);
     		return "community/community_detail";
     	}
-        this.commentService.create(community, commentForm.getContent()/*, member*/);
+        this.commentService.create(community, commentForm.getContent(), member);
         return String.format("redirect:/community/detail/%s", boardNo);
     }
 }

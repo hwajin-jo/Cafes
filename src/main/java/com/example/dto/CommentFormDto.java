@@ -9,6 +9,6 @@ import lombok.Setter;
 @Setter
 public class CommentFormDto {
 	
-    @NotEmpty(message = "³»¿ëÀº ÇÊ¼öÀÔ´Ï´Ù.")
+    @NotEmpty(message = "ëŒ“ê¸€ ë‚´ìš©ì„ ì…ë ¥í•´ ì£¼ì„¸ìš”.")
     private String content;
 }

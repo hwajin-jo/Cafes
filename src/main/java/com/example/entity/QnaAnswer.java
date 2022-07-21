@@ -1,7 +1,7 @@
 package com.example.entity;
 
 import java.time.LocalDateTime;
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,7 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.springframework.data.annotation.CreatedDate;
+import javax.persistence.ManyToMany;
 
 
 import lombok.Getter;
@@ -40,5 +40,7 @@ public class QnaAnswer {
 	
 	private LocalDateTime modifyDate;
 	
-
+	@ManyToMany
+    Set<Member> voter;
+	
 }

@@ -13,18 +13,18 @@ import lombok.Setter;
 @Getter
 public class MemberFormDto {
 
-	@NotBlank(message = "ÀÌ¸§Àº ÇÊ¼ö ÀÔ·Â °ªÀÔ´Ï´Ù.")
+	@NotBlank(message = "ì´ë¦„ì€ í•„ìˆ˜ ì…ë ¥ ê°’ì…ë‹ˆë‹¤.")
 	private String name;
 	
-	@NotEmpty(message = "ÀÌ¸ŞÀÏÀº ÇÊ¼ö ÀÔ·Â °ªÀÔ´Ï´Ù.")
-	@Email(message = "ÀÌ¸ŞÀÏ Çü½ÄÀ¸·Î ÀÔ·ÂÇØÁÖ¼¼¿ä.")
+	@NotEmpty(message = "ì´ë©”ì¼ì€ í•„ìˆ˜ ì…ë ¥ ê°’ì…ë‹ˆë‹¤.")
+	@Email(message = "ì´ë©”ì¼ í˜•ì‹ìœ¼ë¡œ ì…ë ¥í•´ì£¼ì„¸ìš”.")
 	private String email;
 	
-	@NotEmpty(message ="ºñ¹Ğ¹øÈ£´Â ÇÊ¼ö ÀÔ·Â °ªÀÔ´Ï´Ù.")
-	@Length(min=8, max = 16, message = "ºñ¹Ğ¹øÈ£´Â 8ÀÚ ÀÌ»ó, 16ÀÚ ÀÌÇÏ·Î ÀÔ·ÂÇØÁÖ¼¼¿ä")
+	@NotEmpty(message ="ë¹„ë°€ë²ˆí˜¸ëŠ” í•„ìˆ˜ ì…ë ¥ ê°’ì…ë‹ˆë‹¤.")
+	@Length(min=8, max = 16, message = "ë¹„ë°€ë²ˆí˜¸ëŠ” 8ì ì´ìƒ, 16ì ì´í•˜ë¡œ ì…ë ¥í•´ì£¼ì„¸ìš”")
 	private String password;
 	
-	@NotEmpty(message = "ÀüÈ­¹øÈ£´Â ÇÊ¼ö ÀÔ·Â °ªÀÔ´Ï´Ù.")
+	@NotEmpty(message = "ì „í™”ë²ˆí˜¸ëŠ” í•„ìˆ˜ ì…ë ¥ ê°’ì…ë‹ˆë‹¤.")
 	private String phone;
 
 	

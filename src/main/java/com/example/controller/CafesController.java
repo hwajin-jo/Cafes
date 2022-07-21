@@ -25,7 +25,7 @@ public class CafesController {
 
 	private final CafesService cafesService;
 	
-	//Ä«Æä ¸ñ·Ï
+	//ì¹´í˜ ëª©ë¡
 	@RequestMapping("/cafes/list")
 	public String list(Model model) {
 		List<Cafes> cafes = cafesService.getList();
@@ -33,7 +33,7 @@ public class CafesController {
 		return "cafes/cafesUser";
 	}
 	
-	//Ä«Æä ¸ñ·Ï - °ü¸®ÀÚ
+	//ì¹´í˜ ëª©ë¡ - ê´€ë¦¬ì
 	@RequestMapping("/admin/list")
 	public String listAdmin(Model model) {
 		List<Cafes> cafes = cafesService.getList();
@@ -41,7 +41,7 @@ public class CafesController {
 		return "cafes/cafesList";
 	}
 	
-	//Ä«Æä ¼Ò°³±Û »ó¼¼ ÆäÀÌÁö
+	//ì¹´í˜ ì†Œê°œê¸€ ìƒì„¸ í˜ì´ì§€
 	@RequestMapping("/cafes/detail/{id}")
 	public String detail(Model model, @PathVariable("id") Long id) {
 		Cafes cafes = this.cafesService.getCafes(id);
@@ -49,7 +49,7 @@ public class CafesController {
 		return "cafes/cafeDetailUser";
 	}
 	
-	// Ä«Æä ¼Ò°³±Û »ó¼¼ ÆäÀÌÁö - °ü¸®ÀÚ
+	// ì¹´í˜ ì†Œê°œê¸€ ìƒì„¸ í˜ì´ì§€ - ê´€ë¦¬ì
 	@RequestMapping("/admin/detail/{id}")
 	public String detailAdmin(Model model, @PathVariable("id") Long id) {
 		Cafes cafes = this.cafesService.getCafes(id);
@@ -57,7 +57,7 @@ public class CafesController {
 		return "cafes/cafeDetailAdmin";
 	}
 	
-	//Ä«Æä ¼Ò°³±Û ÀÛ¼º - °ü¸®ÀÚ¸¸ ÀÛ¼º °¡´É
+	//ì¹´í˜ ì†Œê°œê¸€ ì‘ì„± - ê´€ë¦¬ìë§Œ ì‘ì„± ê°€ëŠ¥
 	@RequestMapping("/admin/create")
 	public String cafesCreate() {
 		return "cafes/cafeWrite";
@@ -74,7 +74,7 @@ public class CafesController {
 		return "redirect:/admin/list";
 	}
 	
-	//Ä«Æä ¼Ò°³±Û ¼öÁ¤
+	//ì¹´í˜ ì†Œê°œê¸€ ìˆ˜ì •
 	@GetMapping("/admin/modify/{id}")
 	public String questionModify(CafesFormDto cafesFormDto, @PathVariable("id") Long id) {
 		Cafes cafes = this.cafesService.getCafes(id);
@@ -85,7 +85,7 @@ public class CafesController {
 		cafesFormDto.setCafeImage(cafes.getCafeImage());
 		cafesFormDto.setAddress(cafes.getAddress());
 		
-		return "cafes/cafesWrite";
+		return "cafes/cafeWrite";
 	}
 	@PostMapping("/admin/modify/{id}")
 	public String questionModify(@Valid CafesFormDto cafesFormDto,
@@ -98,8 +98,15 @@ public class CafesController {
 		this.cafesService.modify(cafes, cafesFormDto.getSubject(), cafesFormDto.getSubtitle(), cafesFormDto.getContent(),
 								cafesFormDto.getCafeImage(), cafesFormDto.getAddress());
 		
-		return String.format("redirect:/admin/list/detail/%s", id);
+		return String.format("redirect:/admin/detail/%s", id);
 	}
 	
+	//ì¹´í˜ ì†Œê°œê¸€ ì‚­ì œ
+	@GetMapping("/admin/delete/{id}")
+    public String questionDelete(@PathVariable("id") Long id) {
+        Cafes cafes = this.cafesService.getCafes(id);
+        this.cafesService.delete(cafes);
+        return "redirect:/admin/list";
+    }
 	
 }

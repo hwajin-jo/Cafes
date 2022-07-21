@@ -27,7 +27,7 @@ public class QqService {
 	public Page<QnaQuestion> getList(int page){
 		List<Sort.Order> sorts = new ArrayList<>();
         sorts.add(Sort.Order.desc("createDate"));
-		Pageable pageable = PageRequest.of(page, 10, Sort.by(sorts));
+		Pageable pageable = PageRequest.of(page, 7, Sort.by(sorts));
 		return this.qqRepository.findAll(pageable);
 	}
 	
@@ -57,6 +57,11 @@ public class QqService {
 	
 	public void delete(QnaQuestion qnaQuestion) {
 		this.qqRepository.delete(qnaQuestion);
+	}
+	
+	public void vote(QnaQuestion question, Member member) {
+		question.getVoter().add(member);
+		this.qqRepository.save(question);
 	}
 
 }
