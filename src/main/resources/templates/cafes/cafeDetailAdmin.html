@@ -59,7 +59,8 @@
             <br><br>
 
             <div id="btns" style="text-align: center;">
-                <button type="button" class="w-btn w-btn-blue" onclick="location.href='cafeUpdate1.html'"> 수정 </button>
+            	<a th:href="@{|/admin/modify/${cafes.id}|}" class="w-btn w-btn-blue"
+            		th:text="수정"></a>
                 <button type="button" class="w-btn w-btn-blue" onclick="del()"> 삭제 </button>
             </div>
 

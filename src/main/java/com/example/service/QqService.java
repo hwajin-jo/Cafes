@@ -27,7 +27,11 @@ public class QqService {
 	public Page<QnaQuestion> getList(int page){
 		List<Sort.Order> sorts = new ArrayList<>();
         sorts.add(Sort.Order.desc("createDate"));
+<<<<<<< HEAD
 		Pageable pageable = PageRequest.of(page, 10, Sort.by(sorts));
+=======
+		Pageable pageable = PageRequest.of(page, 7, Sort.by(sorts));
+>>>>>>> 9b9716e8f763cfdc5d52edab049355f75af99250
 		return this.qqRepository.findAll(pageable);
 	}
 	
@@ -58,5 +62,13 @@ public class QqService {
 	public void delete(QnaQuestion qnaQuestion) {
 		this.qqRepository.delete(qnaQuestion);
 	}
+<<<<<<< HEAD
+=======
+	
+	public void vote(QnaQuestion question, Member member) {
+		question.getVoter().add(member);
+		this.qqRepository.save(question);
+	}
+>>>>>>> 9b9716e8f763cfdc5d52edab049355f75af99250
 
 }

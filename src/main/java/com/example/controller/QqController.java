@@ -124,4 +124,17 @@ public class QqController {
 		
 	}
 	
+<<<<<<< HEAD
+=======
+	@PreAuthorize("isAuthenticated()")
+	@GetMapping("/vote/{id}")
+	public String questionVote(Principal principal,
+							   @PathVariable("id") Integer id) {
+		QnaQuestion question = this.qqService.getQuestion(id);
+		Member member = this.memberService.getMember(principal.getName());
+		this.qqService.vote(question, member);
+		return String.format("redirect:/qna/detail/%s", id);
+	}
+	
+>>>>>>> 9b9716e8f763cfdc5d52edab049355f75af99250
 }
