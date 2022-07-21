@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -64,6 +65,10 @@ public class CafesController {
 	public String cafesCreate() {
 		return "cafes/cafeWrite";
 	}
+	@GetMapping("/admin/create")
+	public String cafesCreate(CafesFormDto cafesFormDto) {
+		return "cafes/cafeWrite";
+	}
 	@PostMapping("/admin/create")
 	public String cafesCreate(@Valid CafesFormDto cafesFormDto, BindingResult bindingResult) {
 		if(bindingResult.hasErrors())	return "cafes/cafeWrite";
@@ -71,6 +76,7 @@ public class CafesController {
 								cafesFormDto.getCafeImage(), cafesFormDto.getAddress());
 		return "redirect:/admin/list";
 	}
+	
 	
 	
 	
