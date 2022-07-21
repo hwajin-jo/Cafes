@@ -124,6 +124,8 @@ public class QqController {
 		
 	}
 	
+<<<<<<< HEAD
+=======
 	@PreAuthorize("isAuthenticated()")
 	@GetMapping("/vote/{id}")
 	public String questionVote(Principal principal,
@@ -134,4 +136,5 @@ public class QqController {
 		return String.format("redirect:/qna/detail/%s", id);
 	}
 	
+>>>>>>> 9b9716e8f763cfdc5d52edab049355f75af99250
 }

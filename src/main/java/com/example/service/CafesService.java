@@ -46,6 +46,8 @@ public class CafesService {
 		
 		this.cafesRepository.save(cafes);
 	}
+<<<<<<< HEAD
+=======
 
 	public void modify(Cafes cafes, String subject, String subtitle, String content, String cafeImage, String address) {
 		cafes.setSubject(subject);
@@ -57,5 +59,6 @@ public class CafesService {
 		
 		this.cafesRepository.save(cafes);
 	}
+>>>>>>> 9b9716e8f763cfdc5d52edab049355f75af99250
 	
 }

@@ -4,6 +4,12 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
+<<<<<<< HEAD
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+=======
+>>>>>>> 9b9716e8f763cfdc5d52edab049355f75af99250
 import org.springframework.stereotype.Service;
 
 import com.example.DataNotFoundException;
@@ -33,6 +39,31 @@ public class CommunityService {
 	}
 	
 	public void create(String subject, String content, Member name) {
+<<<<<<< HEAD
+        Community community = new Community();
+        community.setSubject(subject);
+        community.setContent(content);
+        community.setCreateDate(LocalDateTime.now());
+        community.setAuthor(name);
+        this.communityRepository.save(community);
+    }
+	
+	public void modify(Community community, String subject, String content) {
+		community.setSubject(subject);
+		community.setContent(content);
+        this.communityRepository.save(community);
+    }
+	
+	public Page<Community> getList(int page){
+		Pageable pageable = PageRequest.of(page, 10);
+		return this.communityRepository.findAll(pageable);
+	}
+	
+	public void delete(Community community) {
+		this.communityRepository.delete(community);
+	}
+	
+=======
         Community c = new Community();
         c.setSubject(subject);
         c.setContent(content);
@@ -40,4 +71,5 @@ public class CommunityService {
         c.setAuthor(name);
         this.communityRepository.save(c);
     }
+>>>>>>> 9b9716e8f763cfdc5d52edab049355f75af99250
 }

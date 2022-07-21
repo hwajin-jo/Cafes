@@ -9,9 +9,12 @@
 #lbtn {
 	margin-left: 15px;
 }
+<<<<<<< HEAD
+=======
 #lbtn2 {
 	margin-left: 15px;
 }
+>>>>>>> 9b9716e8f763cfdc5d52edab049355f75af99250
 
 </style>
 
@@ -19,11 +22,19 @@
 <div layout:fragment = "content">
 
 <!-- 본문 -->
+<<<<<<< HEAD
+<br><br><br><br><br><br>
+<div class="container my-3">
+    <!-- 질문 -->
+    <h2 class="border-bottom py-2" th:text="${question.subject}"></h2>
+    <div class="card my-3">
+=======
 <br><br><br><br>
 <div class="container my-3">
     <!-- 질문 -->
     <h2 class="border-bottom py-2" th:text="${question.subject}"></h2>
     <div class="card my-3 mb-5">
+>>>>>>> 9b9716e8f763cfdc5d52edab049355f75af99250
         <div class="card-body mb-5">
             <div class="card-text" style="white-space: pre-line;" th:text="${question.content}"></div>
             <div class="d-flex justify-content-end">
@@ -36,11 +47,14 @@
             </div>
         </div>
 		<div class="my-3">
+<<<<<<< HEAD
+=======
 			
 			<a href="javascript:void(0);" class="recommend btn btn-sm btn-outline-secondary"
                 id="lbtn2" th:data-uri="@{|/qna/vote/${question.id}|}">  도움이 되셨나요?
                 <span class="badge rounded-pill bg-primary" th:text="${#lists.size(question.voter)}"></span>
             </a>
+>>>>>>> 9b9716e8f763cfdc5d52edab049355f75af99250
             <a th:href="@{|/qna/modify/${question.id}|}" class="btn btn-sm btn-outline-secondary"
                 sec:authorize="isAuthenticated()" id="lbtn"
                 th:if="${question.author != null and #authentication.getPrincipal().getUsername() == question.author.name}"
@@ -99,9 +113,12 @@
         </textarea>
         <input type="submit" value="답변등록" class="btn btn-primary my-2">
     </form>
+<<<<<<< HEAD
+=======
     	<br>
     	<a th:href="@{http://localhost:9000/qna/list}" class="btn btn-secondary">목록보기</a>
     	
+>>>>>>> 9b9716e8f763cfdc5d52edab049355f75af99250
 </div>
 <br><br><br><br>
 
@@ -115,6 +132,8 @@ Array.from(delete_elements).forEach(function(element) {
         };
     });
 });
+<<<<<<< HEAD
+=======
 
 const recommend_elements = document.getElementsByClassName("recommend");
 Array.from(recommend_elements).forEach(function(element) {
@@ -125,5 +144,6 @@ Array.from(recommend_elements).forEach(function(element) {
     });
 });
 
+>>>>>>> 9b9716e8f763cfdc5d52edab049355f75af99250
 </script>
 </html>
