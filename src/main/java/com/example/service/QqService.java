@@ -51,7 +51,12 @@ public class QqService {
 	public void modify(QnaQuestion question, String subject, String content) {
 		question.setSubject(subject);
 		question.setContent(content);
+		question.setModifyDate(LocalDateTime.now());
 		this.qqRepository.save(question);
+	}
+	
+	public void delete(QnaQuestion qnaQuestion) {
+		this.qqRepository.delete(qnaQuestion);
 	}
 
 }

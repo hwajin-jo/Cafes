@@ -80,13 +80,13 @@ public class QqController {
 								 @PathVariable("id") Integer id,
 								 Principal principal) {
 		
-		QnaQuestion qnaQuestion = this.qqService.getQuestion(id);
+		QnaQuestion question = this.qqService.getQuestion(id);
 		
-		if(!qnaQuestion.getAuthor().getName().equals(principal.getName())) {
+		if(!question.getAuthor().getName().equals(principal.getName())) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "수정권한이 없습니다.");
         }
-		qqFormDto.setSubject(qnaQuestion.getSubject());
-		qqFormDto.setContent(qnaQuestion.getContent());
+		qqFormDto.setSubject(question.getSubject());
+		qqFormDto.setContent(question.getContent());
 		return "/qna/qnaForm";
 		
 	}
@@ -109,4 +109,19 @@ public class QqController {
 		this.qqService.modify(qnaQuestion, qqFormDto.getSubject(), qqFormDto.getContent());
 		return String.format("redirect:/qna/detail/%s", id);
 	}
+	
+	@PreAuthorize("isAuthenticated()")
+	@GetMapping("/delete/{id}")
+	public String questionDelete(Principal principal,
+								 @PathVariable("id") Integer id) {
+		QnaQuestion qnaQuestion = this.qqService.getQuestion(id);
+		
+		if (!qnaQuestion.getAuthor().getName().equals(principal.getName())) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "삭제권한이 없습니다.");
+        }
+		this.qqService.delete(qnaQuestion);
+		return "redirect:/";
+		
+	}
+	
 }

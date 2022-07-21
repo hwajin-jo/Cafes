@@ -38,6 +38,7 @@ public class QnaAnswer {
 	@ManyToOne
 	private Member author;
 	
-//	private LocalDateTime modifyDate;
+	private LocalDateTime modifyDate;
+	
 
 }

@@ -32,10 +32,9 @@ public class CafesController {
 		return "cafes/cafesUser";
 	}
 	
-<<<<<<< HEAD
+
 	//Ä«ï¿½ï¿½ ï¿½Ò°ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-=======
-	//Ä«Æä ¸ñ·Ï - °ü¸®ÀÚ
+	//Ä«ï¿½ï¿½ ï¿½ï¿½ï¿½ - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	@RequestMapping("/admin/list")
 	public String listAdmin(Model model) {
 		List<Cafes> cafes = cafesService.getList();
@@ -43,8 +42,8 @@ public class CafesController {
 		return "cafes/cafesList";
 	}
 	
-	//Ä«Æä ¼Ò°³±Û »ó¼¼ ÆäÀÌÁö
->>>>>>> aa5dd956232a81f4f6f16393a8f40b1655f18892
+	//Ä«ï¿½ï¿½ ï¿½Ò°ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+
 	@RequestMapping("/cafes/detail/{id}")
 	public String detail(Model model, @PathVariable("id") Long id) {
 		Cafes cafes = this.cafesService.getCafes(id);
