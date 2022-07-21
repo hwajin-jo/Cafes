@@ -31,7 +31,8 @@
                 <li> <a href="cafesUser.html" style="color:#6aafe6"> Cafes </a> <br> </li>
                 <li> <a href="community.html"> Community </a> <br> </li>
                 <li> <a href="qna.html"> Q&A </a> <br> </li>
-                <li> <a href="mainLogin.html"> LOGOUT </a> <br> </li>
+                <li> <a href="#" sec:authorize="isAnonymous()"> LOGIN </a> <br> </li>
+                <li> <a href="#" sec:authorize="isAuthenticated()"> LOGOUT </a> <br> </li>
             </ul>
         </nav>
     </header>
@@ -41,7 +42,7 @@
     <section id="mainDiv">
         <div class="container">
             <!-- <div style="width: 600px; height: 400px; margin-top: 150px; margin-left: 600px; background-color: gray;"></div> -->
-            <form th:object="${cafesForm}" method="post">
+            <form th:object="${cafesFormDto}" method="post">
                 <div class="form-group">
                     <label for="title"> 제목 </label><br>
                     <input type="text" th:field="*{subject}" class="form-control" id="title" placeholder="제목 입력" name="title">
@@ -64,7 +65,7 @@
                 <input type="file"> <br>
                 <!-- cafe_write.css를 만들지 않고 qna.css 링크 걸어 사용했습니다. 참고하세요 -->
                 <!-- cafeDetailAdmin.js의 apply funtion으로 연결 -->
-                <button type="button" class="w-btn w-btn-blue pull-right" onclick="apply()"> 등록 </button>
+                <input type="submit" value="등록" class="w-btn w-btn-blue pull-right">
             </form>
         </div>
 
