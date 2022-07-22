@@ -18,10 +18,10 @@ import com.example.service.MemberSecurityService;
 
 import lombok.RequiredArgsConstructor;
 
-@RequiredArgsConstructor //qna 사용
+@RequiredArgsConstructor //qna �궗�슜
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true) // qnaController에 @PreAuthorize 사용하기위해 필요
+@EnableGlobalMethodSecurity(prePostEnabled = true) // qnaController�뿉 @PreAuthorize �궗�슜�븯湲곗쐞�빐 �븘�슂
 public class SecurityConfig  {
 
     @Autowired
@@ -42,7 +42,7 @@ public class SecurityConfig  {
 
         http.authorizeRequests()
                 .mvcMatchers("/css/**", "/js/**", "/img/**").permitAll()
-                .mvcMatchers("/", "/members/**", "/community/**","/cafes/**", "/images/**").permitAll()
+                .mvcMatchers("/", "/members/**", "/community/**","/cafes/**", "/qna/**", "/images/**").permitAll()
                 .mvcMatchers("/admin/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
         ;
