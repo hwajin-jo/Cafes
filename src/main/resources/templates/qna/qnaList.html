@@ -1,6 +1,6 @@
 <html layout:decorate = "~{layout}">
 <th:block layout:fragment="css">
-<link rel="stylesheet" type="text/css" th:href="@{/bootstrap.min.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
 </th:block>
 <div layout:fragment = "content" class="container my-3">
 
@@ -38,10 +38,10 @@
     	</tbody>
 	</table>
 	
-	<!-- 페이징 -->
+	<!-- �럹�씠吏� -->
 	    <div th:if="${!paging.isEmpty()}">
         <ul class="pagination justify-content-center">
-        <!-- 처음으로 버튼 구현 ? -->
+        <!-- 泥섏쓬�쑝濡� 踰꾪듉 援ы쁽 ? -->
             <li class="page-item" th:classappend="${!paging.hasPrevious} ? 'disabled'">
                 <a class="page-link"
                     th:href="@{|?page=${paging.number-1}|}">
@@ -59,11 +59,11 @@
                     <span>다음</span>
                 </a>
             </li>
-            <!-- 끝으로 버튼 구현 ? -->
+            <!-- �걹�쑝濡� 踰꾪듉 援ы쁽 ? -->
         </ul>
     </div>
 	
-	<!-- 페이징 끝 -->
+	<!-- �럹�씠吏� �걹 -->
 	<a th:href="@{/qna/create}" class="btn btn-secondary">질문 등록</a>
 	
 	<a th:href="@{http://localhost:9000/}" class="btn btn-secondary">메인페이지</a>

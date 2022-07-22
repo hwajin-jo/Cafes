@@ -1,6 +1,6 @@
 <html layout:decorate = "~{layout}">
 <th:block layout:fragment="css">
-<link rel="stylesheet" type="text/css" th:href="@{/bootstrap.min.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
 </th:block>
 <div layout:fragment = "content" class="container">
 
@@ -10,7 +10,7 @@
 <h5 class="my-3 border-bottom pb-2">질문 등록</h5>
 <form  th:object="${qqFormDto}" method="post">
 
-	<!-- th:action 삭제해서 토큰 직접 만듦 -->
+	<!-- th:action �궘�젣�빐�꽌 �넗�겙 吏곸젒 留뚮벀 -->
 	 <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
 	 
 	 <div th:replace="form_errors :: formErrorsFragment"></div>

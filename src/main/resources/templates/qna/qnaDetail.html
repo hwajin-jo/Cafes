@@ -1,5 +1,5 @@
 <html layout:decorate = "~{layout}">
-<!-- 고유 CSS layout으로 보내기 -->
+<!-- 怨좎쑀 CSS layout�쑝濡� 蹂대궡湲� -->
 <th:block layout:fragment="css">
 
 <link rel="stylesheet" type="text/css" th:href="@{/bootstrap.min.css}">
@@ -18,10 +18,10 @@
 </th:block>
 <div layout:fragment = "content">
 
-<!-- 본문 -->
+<!-- 蹂몃Ц -->
 <br><br><br><br>
 <div class="container my-3">
-    <!-- 질문 -->
+    <!-- 吏덈Ц -->
     <h2 class="border-bottom py-2" th:text="${question.subject}"></h2>
     <div class="card my-3 mb-5">
         <div class="card-body mb-5">
@@ -44,19 +44,19 @@
             <a th:href="@{|/qna/modify/${question.id}|}" class="btn btn-sm btn-outline-secondary"
                 sec:authorize="isAuthenticated()" id="lbtn"
                 th:if="${question.author != null and #authentication.getPrincipal().getUsername() == question.author.name}"
-                th:text="수정"></a>
+                th:text="�닔�젙"></a>
                 <a href="javascript:void(0);" th:data-uri="@{|/qna/delete/${question.id}|}"
                 class="delete btn btn-sm btn-outline-danger" sec:authorize="isAuthenticated()"
                 th:if="${question.author != null and #authentication.getPrincipal().getUsername() == question.author.name}"
-                th:text="삭제"></a>
+                th:text="�궘�젣"></a>
         </div>
     </div>
     <br><br><br>
-    <!-- 답변의 갯수 표시 -->
+    <!-- �떟蹂��쓽 媛��닔 �몴�떆 -->
     <h5 class="border-bottom my-3 py-2" 
         th:text="|${#lists.size(question.answerList)}개의 답변이 있습니다.|"></h5>
         
-    <!-- 답변 반복 시작 -->
+    <!-- �떟蹂� 諛섎났 �떆�옉 -->
     <div class="card my-3" th:each="answer : ${question.answerList}">
         <div class="card-body">
             <div class="card-text" style="white-space: pre-line;" th:text="${answer.content}"></div>
@@ -83,8 +83,8 @@
         	</div>
         </div>
     </div>
-    <!-- 답변 반복 끝  -->
-    <!-- 답변 작성 -->
+    <!-- �떟蹂� 諛섎났 �걹  -->
+    <!-- �떟蹂� �옉�꽦 -->
     <form th:action="@{|/qnaanswer/create/${question.id}|}" 
     	  th:object="${qaFormDto}"
     	  method="post" class="my-3">
