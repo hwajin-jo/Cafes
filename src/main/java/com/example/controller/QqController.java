@@ -40,9 +40,11 @@ public class QqController {
 	
 	@RequestMapping("/list")
 	public String list(Model model,
-					   @RequestParam(value="page",defaultValue = "0") int page) {
-		Page<QnaQuestion> paging = this.qqService.getList(page);
+					   @RequestParam(value="page",defaultValue = "0") int page,
+					   @RequestParam(value = "kw", defaultValue = "")String kw) {
+		Page<QnaQuestion> paging = this.qqService.getList(page, kw);
 		model.addAttribute("paging",paging);
+		model.addAttribute("kw",kw);
 		return "/qna/qnaList";
 		
 	}
@@ -120,7 +122,7 @@ public class QqController {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "삭제권한이 없습니다.");
         }
 		this.qqService.delete(qnaQuestion);
-		return "redirect:/";
+		return "redirect:/qna/list";
 		
 	}
 

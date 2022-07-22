@@ -26,7 +26,7 @@ public class CafesController {
 
 	private final CafesService cafesService;
 	
-	//카페 목록
+	//移댄럹 紐⑸줉
 	@RequestMapping("/cafes/list")
 	public String list(Model model) {
 		List<Cafes> cafes = cafesService.getList();
@@ -34,7 +34,7 @@ public class CafesController {
 		return "cafes/cafesUser";
 	}
 	
-	//카페 목록 - 관리자
+	//移댄럹 紐⑸줉 - 愿�由ъ옄
 	@RequestMapping("/admin/list")
 	public String listAdmin(Model model) {
 		List<Cafes> cafes = cafesService.getList();
@@ -42,7 +42,7 @@ public class CafesController {
 		return "cafes/cafesList";
 	}
 	
-	//카페 소개글 상세 페이지
+	//移댄럹 �냼媛쒓� �긽�꽭 �럹�씠吏�
 	@RequestMapping("/cafes/detail/{id}")
 	public String detail(Model model, @PathVariable("id") Long id) {
 		Cafes cafes = this.cafesService.getCafes(id);
@@ -50,7 +50,7 @@ public class CafesController {
 		return "cafes/cafeDetailUser";
 	}
 	
-	// 카페 소개글 상세 페이지 - 관리자
+	// 移댄럹 �냼媛쒓� �긽�꽭 �럹�씠吏� - 愿�由ъ옄
 	@RequestMapping("/admin/detail/{id}")
 	public String detailAdmin(Model model, @PathVariable("id") Long id) {
 		Cafes cafes = this.cafesService.getCafes(id);
@@ -58,7 +58,7 @@ public class CafesController {
 		return "cafes/cafeDetailAdmin";
 	}
 	
-	//카페 소개글 작성 - 관리자만 작성 가능
+	//移댄럹 �냼媛쒓� �옉�꽦 - 愿�由ъ옄留� �옉�꽦 媛��뒫
 	@RequestMapping("/admin/create")
 	public String cafesCreate() {
 		return "cafes/cafeWrite";
@@ -75,7 +75,7 @@ public class CafesController {
 		return "redirect:/admin/list";
 	}
 	
-	//카페 소개글 수정
+	//移댄럹 �냼媛쒓� �닔�젙
 	@GetMapping("/admin/modify/{id}")
 	public String cafesModify(CafesFormDto cafesFormDto, MultipartFile file, @PathVariable("id") Long id) {
 		Cafes cafes = this.cafesService.getCafes(id);
@@ -103,12 +103,15 @@ public class CafesController {
 		return String.format("redirect:/admin/detail/%s", id);
 	}
 	
-	//카페 소개글 삭제
+	//移댄럹 �냼媛쒓� �궘�젣
 	@GetMapping("/admin/delete/{id}")
     public String cafesDelete(@PathVariable("id") Long id) {
         Cafes cafes = this.cafesService.getCafes(id);
         this.cafesService.delete(cafes);
         return "redirect:/admin/list";
     }
+	
+
+	
 	
 }

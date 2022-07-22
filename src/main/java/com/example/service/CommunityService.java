@@ -4,12 +4,21 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Join;
+import javax.persistence.criteria.JoinType;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import com.example.DataNotFoundException;
+import com.example.entity.Comment;
 import com.example.entity.Community;
 import com.example.entity.Member;
 import com.example.repository.CommunityRepository;
@@ -50,13 +59,33 @@ public class CommunityService {
         this.communityRepository.save(community);
     }
 	
-	public Page<Community> getList(int page){
+	public Page<Community> getList(int page, String kw){
 		Pageable pageable = PageRequest.of(page, 10);
-		return this.communityRepository.findAll(pageable);
+		Specification<Community> spec = search(kw);
+		return this.communityRepository.findAll(spec, pageable);
 	}
 	
 	public void delete(Community community) {
 		this.communityRepository.delete(community);
 	}
+	
+	//검색 부분
+	private Specification<Community> search(String kw) {
+        return new Specification<>() {
+            private static final long serialVersionUID = 1L;
+            @Override
+            public Predicate toPredicate(Root<Community> c, CriteriaQuery<?> query, CriteriaBuilder cb) {
+                query.distinct(true);  // 중복을 제거 
+                Join<Community, Member> u1 = c.join("author", JoinType.LEFT);
+                Join<Community, Comment> a = c.join("commentList", JoinType.LEFT);
+                Join<Comment, Member> u2 = a.join("author", JoinType.LEFT);
+                return cb.or(cb.like(c.get("subject"), "%" + kw + "%"), // 제목 
+                        cb.like(c.get("content"), "%" + kw + "%"),      // 내용 
+                        cb.like(u1.get("name"), "%" + kw + "%"),    // 질문 작성자 
+                        cb.like(a.get("content"), "%" + kw + "%"),      // 답변 내용 
+                        cb.like(u2.get("name"), "%" + kw + "%"));   // 답변 작성자 
+            }
+        };
+    }
 	
 }
