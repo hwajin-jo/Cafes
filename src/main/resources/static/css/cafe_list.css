@@ -32,3 +32,9 @@ thead {
     background-color: #6aafe6;
     color: #d4dfe6;
 }
+
+.card-body a {
+	font-size: 25px;
+	text-decoration: none;
+	color: black;
+}
