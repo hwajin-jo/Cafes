@@ -35,21 +35,13 @@ public class CommunityController {
 	private final CommunityService communityService;
 	private final MemberService memberService;
 	
-	//게시판 list
-//	@RequestMapping("/list")
-//	public String list(Model model) {
-//		List<Community> communityList = this.communityService.getList();
-//		model.addAttribute("communityList", communityList);
-//		return "community/community_list";
-//	}
 	
 	@RequestMapping("/list")
-	public String list(Model model) {
-		List<Community> communityList = this.communityService.getList();
-		model.addAttribute("communityList", communityList);
+	public String list(Model model, @RequestParam(value="page", defaultValue="0") int page) {
+		Page<Community> paging = this.communityService.getList(page);
+		model.addAttribute("paging", paging);
 		return "community/community_list";
 	}
-	
 	
 	@RequestMapping(value="/detail/{boardNo}")
 	public String detail(Model model, @PathVariable("boardNo") Integer boardNo, CommentFormDto commentForm) {
