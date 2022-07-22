@@ -1,7 +1,5 @@
 package com.example.dto;
 
-import java.time.LocalDate;
-
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
@@ -12,18 +10,19 @@ import lombok.Setter;
 @Setter
 public class CafesFormDto {
 
-	@NotBlank(message = "Á¦¸ñÀ» ÀÔ·ÂÇÏ¼¼¿ä.")
+	@NotBlank(message = "ì œëª©ì„ ì…ë ¥í•˜ì„¸ìš”.")
 	@Size(max = 50)
 	private String subject;
 	
-	@NotBlank(message = "ºÎÁ¦¸ñÀ» ÀÔ·ÂÇÏ¼¼¿ä.")
+	@NotBlank(message = "ë¶€ì œë¥¼ ì…ë ¥í•˜ì„¸ìš”.")
 	@Size(max = 100)
 	private String subtitle;
 	
-	@NotBlank(message = "³»¿ëÀ» ÀÔ·ÂÇÏ¼¼¿ä.")
+	@NotBlank(message = "ë‚´ìš©ì„ ì…ë ¥í•˜ì„¸ìš”.")
 	private String content;
 	
-	private String cafeImage;
+	private String fileName;
+	private String filePath;
 	
 	private String address;
 	

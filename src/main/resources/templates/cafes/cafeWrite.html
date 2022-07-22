@@ -42,7 +42,7 @@
     <section id="mainDiv">
         <div class="container">
             <!-- <div style="width: 600px; height: 400px; margin-top: 150px; margin-left: 600px; background-color: gray;"></div> -->
-            <form th:object="${cafesFormDto}" method="post">
+            <form th:object="${cafesFormDto}" method="post" enctype="multipart/form-data">
             	<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
 				<div class="alert alert-danger" role="alert" th:if="${#fields.hasAnyErrors()}">
 					<div th:each="err:${#fields.allErrors()}" th:text="${err}"></div>
@@ -66,7 +66,7 @@
                     <textarea th:field="*{content}" class="form-control" name="content" id="content" cols="30" rows="5"
                         placeholder="내용 작성"></textarea>
                 </div>
-                <input type="file"> <br>
+                <input type="file" name="file"> <br>
                 <!-- cafe_write.css를 만들지 않고 qna.css 링크 걸어 사용했습니다. 참고하세요 -->
                 <!-- cafeDetailAdmin.js의 apply funtion으로 연결 -->
                 <input type="submit" value="등록" class="w-btn w-btn-blue pull-right">

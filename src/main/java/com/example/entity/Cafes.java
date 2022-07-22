@@ -35,7 +35,8 @@ public class Cafes {
 	
 	private LocalDate modifyDate;
 	
-	private String cafeImage;
+	private String fileName;
+	private String filePath;
 	
 	private String address;
 	

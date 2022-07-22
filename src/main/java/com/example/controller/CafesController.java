@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.example.dto.CafesFormDto;
 import com.example.entity.Cafes;
@@ -67,28 +68,29 @@ public class CafesController {
 		return "cafes/cafeWrite";
 	}
 	@PostMapping("/admin/create")
-	public String cafesCreate(@Valid CafesFormDto cafesFormDto, BindingResult bindingResult) {
+	public String cafesCreate(@Valid CafesFormDto cafesFormDto, MultipartFile file, BindingResult bindingResult) {
 		if(bindingResult.hasErrors())	return "cafes/cafeWrite";
 		this.cafesService.create(cafesFormDto.getSubject(), cafesFormDto.getSubtitle(), cafesFormDto.getContent(),
-								cafesFormDto.getCafeImage(), cafesFormDto.getAddress());
+								file, cafesFormDto.getAddress());
 		return "redirect:/admin/list";
 	}
 	
 	//카페 소개글 수정
 	@GetMapping("/admin/modify/{id}")
-	public String questionModify(CafesFormDto cafesFormDto, @PathVariable("id") Long id) {
+	public String cafesModify(CafesFormDto cafesFormDto, MultipartFile file, @PathVariable("id") Long id) {
 		Cafes cafes = this.cafesService.getCafes(id);
 		
 		cafesFormDto.setSubject(cafes.getSubject());
 		cafesFormDto.setSubtitle(cafes.getSubtitle());
 		cafesFormDto.setContent(cafes.getContent());
-		cafesFormDto.setCafeImage(cafes.getCafeImage());
+//		cafesFormDto.setCafeImage(cafes.getCafeImage());
 		cafesFormDto.setAddress(cafes.getAddress());
 		
 		return "cafes/cafeWrite";
 	}
 	@PostMapping("/admin/modify/{id}")
-	public String questionModify(@Valid CafesFormDto cafesFormDto,
+	public String cafesModify(@Valid CafesFormDto cafesFormDto,
+								 MultipartFile file,
 								 BindingResult bindingResult,
 								 @PathVariable("id") Long id) {
 		if(bindingResult.hasErrors())	return "cafes/cafeWrite";
@@ -96,14 +98,14 @@ public class CafesController {
 		Cafes cafes = this.cafesService.getCafes(id);
 		
 		this.cafesService.modify(cafes, cafesFormDto.getSubject(), cafesFormDto.getSubtitle(), cafesFormDto.getContent(),
-								cafesFormDto.getCafeImage(), cafesFormDto.getAddress());
+								file, cafesFormDto.getAddress());
 		
 		return String.format("redirect:/admin/detail/%s", id);
 	}
 	
 	//카페 소개글 삭제
 	@GetMapping("/admin/delete/{id}")
-    public String questionDelete(@PathVariable("id") Long id) {
+    public String cafesDelete(@PathVariable("id") Long id) {
         Cafes cafes = this.cafesService.getCafes(id);
         this.cafesService.delete(cafes);
         return "redirect:/admin/list";
