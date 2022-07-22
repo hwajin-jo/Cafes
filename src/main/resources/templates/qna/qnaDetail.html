@@ -98,7 +98,7 @@
         		  th:field="*{content}" 
         		  class="form-control" rows="10">
         </textarea>
-        <input type="submit" value="답변등록" class="btn btn-primary my-2">
+        <input type="submit" value="답변등록" class="btn btn-primary my-2" sec:authorize="isAuthenticated()">
         <a th:href="@{http://localhost:9000/qna/list}" class="btn btn-secondary m-3">목록보기</a>
     </form>
     	
