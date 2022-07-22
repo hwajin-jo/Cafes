@@ -10,12 +10,11 @@
     <br><br>
 
     <section id="mainDiv">
-        <div style="width: 600px; height: 400px; margin-top: 150px; margin-left: 600px; background-color: white;">
+        <div style="width: 600px; height: auto; margin-top: 150px; margin-left: 600px; background-color: white;">
             <ul th:each="cafes : ${cafes}">
                 <!-- cafe_a -->
                 <li>
-                    <div id="cafe_a" class="card border-white mb-3" style="max-width: 600px;"
-                        onclick="location.href='cafeDetailUser1.html'">
+                    <div id="cafe_a" class="card border-white mb-3" style="max-width: 600px;">
                         <div class="row g-0">
                             <div class="col-md-4" style="display:inline-block; vertical-align:top;">
                                 <img th:if="${cafes.fileName != null}" th:src="@{/img/} + ${cafes.fileName}" style="max-width: 150px; max-height: 200px;" class="img-fluid rounded-start" alt="...">
@@ -28,7 +27,9 @@
                                 </div>
                             </div>
                         </div>
+                        <br>
                         <hr>
+                        <br>
                     </div>
                 </li>
 			</ul>

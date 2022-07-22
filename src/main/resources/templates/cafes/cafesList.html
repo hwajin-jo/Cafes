@@ -7,7 +7,7 @@
 <div layout:fragment = "content">
 
 	<section id="mainDiv">
-        <div style="width: 600px; height: 400px; margin-top: 150px; margin-left: 600px; background-color: white;">
+        <div style="width: 600px; height: auto; margin-top: 150px; margin-left: 600px; background-color: white;">
             <ul th:each="cafes : ${cafes}">
                 <li>
                     <div id="cafe_a" class="card border-white mb-3" style="max-width: 600px;">
@@ -24,11 +24,14 @@
                                 </div>
                             </div>
                         </div>
+                        <br>
                         <hr>
+                        <br>
                     </div>
                 </li>
 			</ul>
-			<a th:href="@{/admin/create}" class="w-btn w-btn-blue pull-right"> 새 글쓰기 </a>
+			<div><a th:href="@{/admin/create}" class="w-btn w-btn-blue pull-right"> 새 글쓰기 </a></div>
+			
         </div>
    
     </section>
